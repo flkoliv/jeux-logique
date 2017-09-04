@@ -52,6 +52,9 @@ public class Main extends JFrame {
 
 	}
 
+	/**
+	 * initialise le menu de la fenêtre principale
+	 */
 	private void initialiseMenu() {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu jeuxMenu = new JMenu("Jeux");
