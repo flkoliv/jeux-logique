@@ -4,6 +4,8 @@
 package main.java.ihm;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,6 +13,15 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import main.java.ihm.listener.AideListener;
+import main.java.ihm.listener.ChallengerMasterListener;
+import main.java.ihm.listener.ChallengerPlusListener;
+import main.java.ihm.listener.DefenseurMasterListener;
+import main.java.ihm.listener.DefenseurPlusListener;
+import main.java.ihm.listener.DuelMasterListener;
+import main.java.ihm.listener.DuelPlusListener;
+import main.java.ihm.listener.OptionsListener;
 
 /**
  * Classe principale du jeu
@@ -35,11 +46,9 @@ public class Main extends JFrame {
 		JLabel image = new JLabel(icone);
 		JLabel texte = new JLabel("texte");
 		this.add(image);
-		// this.add(texte);
 		this.setMinimumSize(new Dimension(620, 700));
 		initialiseMenu();
 		this.setVisible(true);
-		// image.setVisible(true);
 
 	}
 
@@ -51,15 +60,29 @@ public class Main extends JFrame {
 		JMenu plusOuMoins = new JMenu("Plus ou Moins");
 		JMenu masterMind = new JMenu("Mastermind");
 
-		JMenuItem quitter = new JMenuItem("Quitter");
 		JMenuItem challengerPlus = new JMenuItem("Challenger");
+		challengerPlus.addActionListener(new ChallengerPlusListener());
 		JMenuItem defenseurPlus = new JMenuItem("Defenseur");
+		defenseurPlus.addActionListener(new DefenseurPlusListener());
 		JMenuItem duelPlus = new JMenuItem("Duel");
+		duelPlus.addActionListener(new DuelPlusListener());
 		JMenuItem challengerMaster = new JMenuItem("Challenger");
+		challengerMaster.addActionListener(new ChallengerMasterListener());
 		JMenuItem defenseurMaster = new JMenuItem("Defenseur");
+		defenseurMaster.addActionListener(new DefenseurMasterListener());
 		JMenuItem duelMaster = new JMenuItem("Duel");
+		duelMaster.addActionListener(new DuelMasterListener());
 		JMenuItem aide = new JMenuItem("?");
+		aide.addActionListener(new AideListener());
 		JMenuItem options = new JMenuItem("Options");
+		options.addActionListener(new OptionsListener());
+		JMenuItem quitter = new JMenuItem("Quitter");
+		quitter.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		plusOuMoins.add(challengerPlus);
 		plusOuMoins.add(defenseurPlus);
 		plusOuMoins.add(duelPlus);
