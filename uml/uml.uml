@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_INcigJGpEee7F9X9ainhmQ" name="uml"/>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_INcigJGpEee7F9X9ainhmQ" name="uml">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_4We3UJJMEeemk6xYDqDYGw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_DV8nkBv8EduZN5aJJITI5w"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_O77aMJJNEeemk6xYDqDYGw">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AcPvcJJLEeemk6xYDqDYGw" name="Plateau">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_UMXrAJJLEeemk6xYDqDYGw" name="nbrEssais" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_mdZyYJJLEeemk6xYDqDYGw" name="longueurCode" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_DotrcJJLEeemk6xYDqDYGw" name=""/>
+  </packagedElement>
+</uml:Model>

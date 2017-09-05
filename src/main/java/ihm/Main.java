@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 import main.java.ihm.listener.AideListener;
 import main.java.ihm.listener.ChallengerMasterListener;
@@ -44,11 +45,17 @@ public class Main extends JFrame {
 		this.setIconImage(img.getImage());
 		ImageIcon icone = new ImageIcon("src/main/ressources/mastermind.png");
 		JLabel image = new JLabel(icone);
-		JLabel texte = new JLabel("texte");
 		this.add(image);
 		this.setMinimumSize(new Dimension(620, 700));
 		initialiseMenu();
+		JPanel panneau = new JPanel();
+		this.setContentPane(panneau);
+		PlusOuMoinsPanel p = new PlusOuMoinsPanel(12);
+		panneau.add(p);
+
 		this.setVisible(true);
+		p.setResult(1235, "++-=");
+		p.setResult(4587, "----");
 
 	}
 
