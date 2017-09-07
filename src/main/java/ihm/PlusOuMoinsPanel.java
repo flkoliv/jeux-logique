@@ -13,6 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.text.MaskFormatter;
 
+import main.java.ihm.listener.PlusPanelOkButtonListener;
+
 public class PlusOuMoinsPanel extends JPanel {
 
 	/**
@@ -28,14 +30,19 @@ public class PlusOuMoinsPanel extends JPanel {
 	private Object[][] tableau;
 	JTable tab;
 
-	public PlusOuMoinsPanel(int taille) {
+	public PlusOuMoinsPanel(int taille, int longueurCode) {
 		this.taille = taille;
 		this.emptyRow = 0;
 		intitule = new JLabel("Entrez votre valeur");
 		saisie = new JPanel();
 		saisie.setLayout(new BoxLayout(saisie, BoxLayout.LINE_AXIS));
+		String mask = "";
+		for (int i = 0; i < longueurCode; i++) {
+			mask += "#";
+		}
+
 		try {
-			MaskFormatter mf = new MaskFormatter("####");
+			MaskFormatter mf = new MaskFormatter(mask);
 			jtf = new JFormattedTextField(mf);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -44,6 +51,7 @@ public class PlusOuMoinsPanel extends JPanel {
 		saisie.add(jtf);
 		saisie.add(Box.createRigidArea(new Dimension(10, 0)));
 		okButton = new JButton("OK");
+		okButton.addActionListener(new PlusPanelOkButtonListener());
 		saisie.add(okButton);
 
 		String title[] = { "Proposition", "Résultat" };
@@ -60,6 +68,10 @@ public class PlusOuMoinsPanel extends JPanel {
 
 	public int getTaille() {
 		return taille;
+	}
+
+	public int propositionsRestantes() {
+		return taille - emptyRow;
 	}
 
 	public void setResult(Integer code, String result) {

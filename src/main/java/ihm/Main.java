@@ -15,6 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import main.PlusOuMoins.PlateauPlusOuMoins;
 import main.java.ihm.listener.AideListener;
 import main.java.ihm.listener.ChallengerMasterListener;
 import main.java.ihm.listener.ChallengerPlusListener;
@@ -31,6 +32,8 @@ import main.java.ihm.listener.OptionsListener;
  *
  */
 public class Main extends JFrame {
+
+	Object jeu;
 
 	/**
 	 * Constructeur de la fenêtre principale de jeu
@@ -49,13 +52,12 @@ public class Main extends JFrame {
 		this.setMinimumSize(new Dimension(620, 700));
 		initialiseMenu();
 		JPanel panneau = new JPanel();
+		panneau.add(image);
 		this.setContentPane(panneau);
-		PlusOuMoinsPanel p = new PlusOuMoinsPanel(12);
-		panneau.add(p);
 
 		this.setVisible(true);
-		p.setResult(1235, "++-=");
-		p.setResult(4587, "----");
+		// p.setResult(1235, "++-=");
+		// p.setResult(4587, "----");
 
 	}
 
@@ -71,7 +73,7 @@ public class Main extends JFrame {
 		JMenu masterMind = new JMenu("Mastermind");
 
 		JMenuItem challengerPlus = new JMenuItem("Challenger");
-		challengerPlus.addActionListener(new ChallengerPlusListener());
+		challengerPlus.addActionListener(new ChallengerPlusListener(this));
 		JMenuItem defenseurPlus = new JMenuItem("Defenseur");
 		defenseurPlus.addActionListener(new DefenseurPlusListener());
 		JMenuItem duelPlus = new JMenuItem("Duel");
@@ -120,6 +122,11 @@ public class Main extends JFrame {
 	public static void main(String[] args) {
 
 		Main f = new Main();
+	}
+
+	public void setJeu(PlateauPlusOuMoins plateauPlusOuMoins) {
+		this.jeu = plateauPlusOuMoins;
+
 	}
 
 }

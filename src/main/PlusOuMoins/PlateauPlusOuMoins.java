@@ -3,6 +3,9 @@
  */
 package main.PlusOuMoins;
 
+import main.java.ihm.Main;
+import main.java.ihm.PlusOuMoinsPanel;
+
 /**
  * @author flkoliv
  *
@@ -12,6 +15,16 @@ public class PlateauPlusOuMoins {
 	int longueurCode = 4;
 	JoueurPlusouMoins attaquant;
 	JoueurPlusouMoins defenseur;
-	char[] code;
+	int code;
+	Main fenetre;
+
+	public PlateauPlusOuMoins(Main fen) {
+		this.fenetre = fen;
+		PlusOuMoinsPanel p = new PlusOuMoinsPanel(nbrEssais, longueurCode);
+		fenetre.getContentPane().removeAll();
+		fenetre.getContentPane().repaint();
+		fenetre.getContentPane().add(p);
+		fenetre.getContentPane().validate();
+	}
 
 }

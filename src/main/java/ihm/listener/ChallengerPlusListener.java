@@ -6,7 +6,8 @@ package main.java.ihm.listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
+import main.PlusOuMoins.PlateauPlusOuMoins;
+import main.java.ihm.Main;
 
 /**
  * @author flkoliv
@@ -14,14 +15,21 @@ import javax.swing.JOptionPane;
  */
 public class ChallengerPlusListener implements ActionListener {
 
-	public ChallengerPlusListener() {
+	private Main fenetre;
 
+	public ChallengerPlusListener(Main p) {
+		this.fenetre = p;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		JOptionPane.showMessageDialog(null, "Plus ou Moins : Challenger", "Attention", JOptionPane.WARNING_MESSAGE);
+		fenetre.setJeu(new PlateauPlusOuMoins(fenetre));
+
+		/*
+		 * PlusOuMoinsPanel p = new PlusOuMoinsPanel(12);
+		 * fenetre.getContentPane().removeAll(); fenetre.getContentPane().repaint();
+		 * fenetre.getContentPane().add(p); fenetre.getContentPane().validate();
+		 */
 	}
 
 }
