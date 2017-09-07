@@ -1,18 +1,257 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_INcigJGpEee7F9X9ainhmQ" name="uml">
-  <packageImport xmi:type="uml:PackageImport" xmi:id="_4We3UJJMEeemk6xYDqDYGw">
-    <importedPackage xmi:type="uml:Model" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_DV8nkBv8EduZN5aJJITI5w"/>
-  </packageImport>
-  <packageImport xmi:type="uml:PackageImport" xmi:id="_O77aMJJNEeemk6xYDqDYGw">
-    <importedPackage xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
-  </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_AcPvcJJLEeemk6xYDqDYGw" name="Plateau">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_UMXrAJJLEeemk6xYDqDYGw" name="nbrEssais" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_mdZyYJJLEeemk6xYDqDYGw" name="longueurCode" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_DotrcJJLEeemk6xYDqDYGw" name=""/>
-  </packagedElement>
-</uml:Model>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_INcigJGpEee7F9X9ainhmQ" name="uml">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_4We3UJJMEeemk6xYDqDYGw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_DV8nkBv8EduZN5aJJITI5w"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_O77aMJJNEeemk6xYDqDYGw">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_IfG_QJPjEeeFzoTTkxK9Yg" name="jeux-logique">
+      <packagedElement xmi:type="uml:Package" xmi:id="_Ih834JPjEeeFzoTTkxK9Yg" name="main">
+        <packagedElement xmi:type="uml:Package" xmi:id="_IiBwYJPjEeeFzoTTkxK9Yg" name="java">
+          <packagedElement xmi:type="uml:Package" xmi:id="_IiDlkJPjEeeFzoTTkxK9Yg" name="ihm">
+            <packagedElement xmi:type="uml:Class" xmi:id="_IiJFIJPjEeeFzoTTkxK9Yg" name="Main" visibility="public">
+              <generalization xmi:type="uml:Generalization" xmi:id="_IilKAJPjEeeFzoTTkxK9Yg" general="_IiQZ4JPjEeeFzoTTkxK9Yg"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_Ii8WYJPjEeeFzoTTkxK9Yg" name="jeu" visibility="private" type="_IiylYJPjEeeFzoTTkxK9Yg" isUnique="false"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IjWmEJPjEeeFzoTTkxK9Yg" name="Main" specification="_IjAn0JPjEeeFzoTTkxK9Yg">
+                <language>JAVA</language>
+                <body>&#xD;
+    this.setTitle(&quot;Mettez votre logique à l'épreuve !&quot;);&#xD;
+    this.setSize(600, 600);&#xD;
+    this.setLocationRelativeTo(null);&#xD;
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);&#xD;
+    ImageIcon img = new ImageIcon(&quot;src/main/ressources/mastermind-icon.jpg&quot;);&#xD;
+    this.setIconImage(img.getImage());&#xD;
+    ImageIcon icone = new ImageIcon(&quot;src/main/ressources/mastermind.png&quot;);&#xD;
+    JLabel image = new JLabel(icone);&#xD;
+    this.add(image);&#xD;
+    this.setMinimumSize(new Dimension(620, 700));&#xD;
+    initialiseMenu();&#xD;
+    JPanel panneau = new JPanel();&#xD;
+    panneau.add(image);&#xD;
+    this.setContentPane(panneau);&#xD;
+    this.setVisible(true);&#xD;
+// p.setResult(1235, &quot;++-=&quot;);&#xD;
+// p.setResult(4587, &quot;----&quot;);&#xD;
+</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IjizUJPjEeeFzoTTkxK9Yg" name="initialiseMenu" specification="_Ija3gJPjEeeFzoTTkxK9Yg">
+                <language>JAVA</language>
+                <body>&#xD;
+    JMenuBar menuBar = new JMenuBar();&#xD;
+    JMenu jeuxMenu = new JMenu(&quot;Jeux&quot;);&#xD;
+    JMenu optionsMenu = new JMenu(&quot;Options&quot;);&#xD;
+    JMenu aideMenu = new JMenu(&quot;Aide&quot;);&#xD;
+    JMenu plusOuMoins = new JMenu(&quot;Plus ou Moins&quot;);&#xD;
+    JMenu masterMind = new JMenu(&quot;Mastermind&quot;);&#xD;
+    JMenuItem challengerPlus = new JMenuItem(&quot;Challenger&quot;);&#xD;
+    challengerPlus.addActionListener(new ChallengerPlusListener(this));&#xD;
+    JMenuItem defenseurPlus = new JMenuItem(&quot;Defenseur&quot;);&#xD;
+    defenseurPlus.addActionListener(new DefenseurPlusListener());&#xD;
+    JMenuItem duelPlus = new JMenuItem(&quot;Duel&quot;);&#xD;
+    duelPlus.addActionListener(new DuelPlusListener());&#xD;
+    JMenuItem challengerMaster = new JMenuItem(&quot;Challenger&quot;);&#xD;
+    challengerMaster.addActionListener(new ChallengerMasterListener());&#xD;
+    JMenuItem defenseurMaster = new JMenuItem(&quot;Defenseur&quot;);&#xD;
+    defenseurMaster.addActionListener(new DefenseurMasterListener());&#xD;
+    JMenuItem duelMaster = new JMenuItem(&quot;Duel&quot;);&#xD;
+    duelMaster.addActionListener(new DuelMasterListener());&#xD;
+    JMenuItem aide = new JMenuItem(&quot;?&quot;);&#xD;
+    aide.addActionListener(new AideListener());&#xD;
+    JMenuItem options = new JMenuItem(&quot;Options&quot;);&#xD;
+    options.addActionListener(new OptionsListener());&#xD;
+    JMenuItem quitter = new JMenuItem(&quot;Quitter&quot;);&#xD;
+    quitter.addActionListener(new ActionListener() {&#xD;
+&#xD;
+        @Override&#xD;
+        public void actionPerformed(ActionEvent arg0) {&#xD;
+            System.exit(0);&#xD;
+        }&#xD;
+    });&#xD;
+    plusOuMoins.add(challengerPlus);&#xD;
+    plusOuMoins.add(defenseurPlus);&#xD;
+    plusOuMoins.add(duelPlus);&#xD;
+    masterMind.add(challengerMaster);&#xD;
+    masterMind.add(defenseurMaster);&#xD;
+    masterMind.add(duelMaster);&#xD;
+    optionsMenu.add(options);&#xD;
+    jeuxMenu.add(plusOuMoins);&#xD;
+    jeuxMenu.add(masterMind);&#xD;
+    jeuxMenu.addSeparator();&#xD;
+    jeuxMenu.add(quitter);&#xD;
+    aideMenu.add(aide);&#xD;
+    menuBar.add(jeuxMenu);&#xD;
+    menuBar.add(optionsMenu);&#xD;
+    menuBar.add(aideMenu);&#xD;
+    this.setJMenuBar(menuBar);&#xD;
+</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IkAtYJPjEeeFzoTTkxK9Yg" name="main" specification="_Ij1uQJPjEeeFzoTTkxK9Yg">
+                <language>JAVA</language>
+                <body>&#xD;
+    Main f = new Main();&#xD;
+</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IkWEkJPjEeeFzoTTkxK9Yg" name="setJeu" specification="_IkNhsJPjEeeFzoTTkxK9Yg">
+                <language>JAVA</language>
+                <body>&#xD;
+    this.jeu = plateauPlusOuMoins;&#xD;
+</body>
+              </ownedBehavior>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_IjAn0JPjEeeFzoTTkxK9Yg" name="Main" visibility="public" method="_IjWmEJPjEeeFzoTTkxK9Yg"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_Ija3gJPjEeeFzoTTkxK9Yg" name="initialiseMenu" visibility="private" method="_IjizUJPjEeeFzoTTkxK9Yg"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_Ij1uQJPjEeeFzoTTkxK9Yg" name="main" visibility="public" isStatic="true" method="_IkAtYJPjEeeFzoTTkxK9Yg">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ij6mwJPjEeeFzoTTkxK9Yg" name="args" type="_IjrWMJPjEeeFzoTTkxK9Yg">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ij9DAJPjEeeFzoTTkxK9Yg"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ij-4MJPjEeeFzoTTkxK9Yg" value="*"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_IkNhsJPjEeeFzoTTkxK9Yg" name="setJeu" visibility="public" method="_IkWEkJPjEeeFzoTTkxK9Yg">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_IkSaMJPjEeeFzoTTkxK9Yg" name="plateauPlusOuMoins" type="_IkFl4JPjEeeFzoTTkxK9Yg"/>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_RzxokJPjEeeFzoTTkxK9Yg" name="OptionsDialogBox" visibility="public">
+              <generalization xmi:type="uml:Generalization" xmi:id="_Rz2hEJPjEeeFzoTTkxK9Yg" general="_Rzy2sJPjEeeFzoTTkxK9Yg"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_Rz3vMJPjEeeFzoTTkxK9Yg" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isUnique="false">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_8heigBydEduyofBvg4RL2w"/>
+                <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_Rz49UJPjEeeFzoTTkxK9Yg" name="defaultValue">
+                  <language>JAVA</language>
+                  <body>8901635042644317428L</body>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0ASEJPjEeeFzoTTkxK9Yg" name="nombreEssaisPOM" visibility="private" type="_Rz6LcJPjEeeFzoTTkxK9Yg" isUnique="false"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0ASEZPjEeeFzoTTkxK9Yg" name="tailleCodePOM" visibility="private" type="_Rz6LcJPjEeeFzoTTkxK9Yg" isUnique="false"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0A5IJPjEeeFzoTTkxK9Yg" name="nombreEssaisMaster" visibility="private" type="_Rz6LcJPjEeeFzoTTkxK9Yg" isUnique="false"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0A5IZPjEeeFzoTTkxK9Yg" name="tailleCodeMaster" visibility="private" type="_Rz6LcJPjEeeFzoTTkxK9Yg" isUnique="false"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0G_wJPjEeeFzoTTkxK9Yg" name="nbrCouleursMaster" visibility="private" type="_R0BgMJPjEeeFzoTTkxK9Yg" isUnique="false"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0KqIJPjEeeFzoTTkxK9Yg" name="devMod" visibility="private" type="_R0Hm0JPjEeeFzoTTkxK9Yg" isUnique="false"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_R0T0EJPjEeeFzoTTkxK9Yg" name="OptionsDialogBox" specification="_R0L4QJPjEeeFzoTTkxK9Yg">
+                <language>JAVA</language>
+                <body>&#xD;
+    super(parent, title, modal);&#xD;
+    this.setSize(550, 270);&#xD;
+    this.setLocationRelativeTo(null);&#xD;
+    this.setResizable(false);&#xD;
+    this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);&#xD;
+    this.initComponent();&#xD;
+    this.setVisible(true);&#xD;
+</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_R0VpQJPjEeeFzoTTkxK9Yg" name="initComponent" specification="_R0UbIJPjEeeFzoTTkxK9Yg">
+                <language>JAVA</language>
+                <body>&#xD;
+    // POM&#xD;
+    JPanel panPOM = new JPanel();&#xD;
+    panPOM.setBackground(Color.white);&#xD;
+    panPOM.setPreferredSize(new Dimension(200, 60));&#xD;
+    nombreEssaisPOM = new JFormattedTextField();&#xD;
+    nombreEssaisPOM.setPreferredSize(new Dimension(25, 25));&#xD;
+    tailleCodePOM = new JFormattedTextField();&#xD;
+    tailleCodePOM.setPreferredSize(new Dimension(25, 25));&#xD;
+    panPOM.setBorder(BorderFactory.createTitledBorder(&quot;Plus ou Moins&quot;));&#xD;
+    panPOM.add(new JLabel(&quot;Nombre d'essais&quot;));&#xD;
+    panPOM.add(nombreEssaisPOM);&#xD;
+    panPOM.add(new JLabel(&quot;Longueur du Code&quot;));&#xD;
+    panPOM.add(tailleCodePOM);&#xD;
+    JPanel panMaster = new JPanel();&#xD;
+    panMaster.setBackground(Color.white);&#xD;
+    panMaster.setPreferredSize(new Dimension(220, 60));&#xD;
+    panMaster.setBorder(BorderFactory.createTitledBorder(&quot;Mastermind&quot;));&#xD;
+    nombreEssaisMaster = new JFormattedTextField();&#xD;
+    nombreEssaisMaster.setPreferredSize(new Dimension(25, 25));&#xD;
+    tailleCodeMaster = new JFormattedTextField();&#xD;
+    tailleCodeMaster.setPreferredSize(new Dimension(25, 25));&#xD;
+    Integer[] tab = { 4, 5, 6, 7, 8, 9, 10 };&#xD;
+    nbrCouleursMaster = new JComboBox&lt;Integer>(tab);&#xD;
+    panMaster.add(new JLabel(&quot;Nombre d'essais&quot;));&#xD;
+    panMaster.add(nombreEssaisMaster);&#xD;
+    panMaster.add(new JLabel(&quot;Longueur du Code&quot;));&#xD;
+    panMaster.add(tailleCodeMaster);&#xD;
+    panMaster.add(new JLabel(&quot;Nombres de couleurs&quot;));&#xD;
+    panMaster.add(nbrCouleursMaster);&#xD;
+    JPanel panMode = new JPanel();&#xD;
+    panMode.setBackground(Color.white);&#xD;
+    panMode.setPreferredSize(new Dimension(220, 60));&#xD;
+    panMode.setBorder(BorderFactory.createTitledBorder(&quot;Mode Dev&quot;));&#xD;
+    panMode.add(new JLabel(&quot;Mode developpeur&quot;));&#xD;
+    devMod = new JCheckBox();&#xD;
+    panMode.add(devMod);&#xD;
+    JPanel panBoutons = new JPanel();&#xD;
+    panBoutons.setBackground(Color.white);&#xD;
+    panBoutons.add(new JButton(&quot;OK&quot;));&#xD;
+    panBoutons.add(new JButton(&quot;Annuler&quot;));&#xD;
+    this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));&#xD;
+    this.getContentPane().add(panPOM);&#xD;
+    this.getContentPane().add(panMaster);&#xD;
+    this.getContentPane().add(panMode);&#xD;
+    this.getContentPane().add(panBoutons);&#xD;
+</body>
+              </ownedBehavior>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_R0L4QJPjEeeFzoTTkxK9Yg" name="OptionsDialogBox" visibility="public" method="_R0T0EJPjEeeFzoTTkxK9Yg">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_R0R-4JPjEeeFzoTTkxK9Yg" name="parent" type="_IiQZ4JPjEeeFzoTTkxK9Yg"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_R0TNAJPjEeeFzoTTkxK9Yg" name="title" type="_IjrWMJPjEeeFzoTTkxK9Yg"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_R0TNAZPjEeeFzoTTkxK9Yg" name="modal">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_R0UbIJPjEeeFzoTTkxK9Yg" name="initComponent" visibility="private" method="_R0VpQJPjEeeFzoTTkxK9Yg"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_IiLhYJPjEeeFzoTTkxK9Yg" name="importedTypes">
+      <packagedElement xmi:type="uml:Package" xmi:id="_IiNWkJPjEeeFzoTTkxK9Yg" name="javax">
+        <packagedElement xmi:type="uml:Package" xmi:id="_IiPLwJPjEeeFzoTTkxK9Yg" name="swing">
+          <packagedElement xmi:type="uml:Class" xmi:id="_IiQZ4JPjEeeFzoTTkxK9Yg" name="JFrame"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Rzy2sJPjEeeFzoTTkxK9Yg" name="JDialog"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Rz6LcJPjEeeFzoTTkxK9Yg" name="JFormattedTextField"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_R0BgMJPjEeeFzoTTkxK9Yg" name="JComboBox"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_R0Hm0JPjEeeFzoTTkxK9Yg" name="JCheckBox"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_IkCikJPjEeeFzoTTkxK9Yg" name="main">
+        <packagedElement xmi:type="uml:Package" xmi:id="_IkDwsJPjEeeFzoTTkxK9Yg" name="PlusOuMoins">
+          <packagedElement xmi:type="uml:Class" xmi:id="_IkFl4JPjEeeFzoTTkxK9Yg" name="PlateauPlusOuMoins"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_IisewJPjEeeFzoTTkxK9Yg" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_IiviEJPjEeeFzoTTkxK9Yg" name="java">
+        <packagedElement xmi:type="uml:Package" xmi:id="_IixXQJPjEeeFzoTTkxK9Yg" name="lang">
+          <packagedElement xmi:type="uml:Class" xmi:id="_IiylYJPjEeeFzoTTkxK9Yg" name="Object"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_IjrWMJPjEeeFzoTTkxK9Yg" name="String"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IfUaoJPjEeeFzoTTkxK9Yg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IfYsEJPjEeeFzoTTkxK9Yg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IgopQJPjEeeFzoTTkxK9Yg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IgsToJPjEeeFzoTTkxK9Yg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/Codegen/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://Codegen_PROFILES/Codegen.profile.uml#_fPDsIBa-EearhdjjJ6cVzQ"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IgxMIJPjEeeFzoTTkxK9Yg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IgzoYJPjEeeFzoTTkxK9Yg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <PapyrusJava:External xmi:id="_IifDYJPjEeeFzoTTkxK9Yg" name="javax.swing.JFrame" base_Classifier="_IiQZ4JPjEeeFzoTTkxK9Yg"/>
+  <PapyrusJava:External xmi:id="_Ii4E8JPjEeeFzoTTkxK9Yg" name="java.lang.Object" base_Classifier="_IiylYJPjEeeFzoTTkxK9Yg"/>
+  <standard:Create xmi:id="_IjGHYJPjEeeFzoTTkxK9Yg" base_BehavioralFeature="_IjAn0JPjEeeFzoTTkxK9Yg"/>
+  <PapyrusJava:External xmi:id="_Ijxc0JPjEeeFzoTTkxK9Yg" name="java.lang.String" base_Classifier="_IjrWMJPjEeeFzoTTkxK9Yg"/>
+  <PapyrusJava:External xmi:id="_IkKeYJPjEeeFzoTTkxK9Yg" name="main.PlusOuMoins.PlateauPlusOuMoins" base_Classifier="_IkFl4JPjEeeFzoTTkxK9Yg"/>
+  <PapyrusJava:External xmi:id="_Rz16AJPjEeeFzoTTkxK9Yg" name="javax.swing.JDialog" base_Classifier="_Rzy2sJPjEeeFzoTTkxK9Yg"/>
+  <PapyrusJava:External xmi:id="_Rz_rAJPjEeeFzoTTkxK9Yg" name="javax.swing.JFormattedTextField" base_Classifier="_Rz6LcJPjEeeFzoTTkxK9Yg"/>
+  <PapyrusJava:External xmi:id="_R0GYsJPjEeeFzoTTkxK9Yg" name="javax.swing.JComboBox" base_Classifier="_R0BgMJPjEeeFzoTTkxK9Yg"/>
+  <PapyrusJava:External xmi:id="_R0KDEJPjEeeFzoTTkxK9Yg" name="javax.swing.JCheckBox" base_Classifier="_R0Hm0JPjEeeFzoTTkxK9Yg"/>
+  <standard:Create xmi:id="_R0QwwJPjEeeFzoTTkxK9Yg" base_BehavioralFeature="_R0L4QJPjEeeFzoTTkxK9Yg"/>
+</xmi:XMI>

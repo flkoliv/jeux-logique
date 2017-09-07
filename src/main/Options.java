@@ -1,14 +1,11 @@
 package main;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
+
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Properties;
 
 /**
  * 
@@ -18,14 +15,10 @@ import java.io.Serializable;
  * @author flkoliv
  *
  */
-public class Options implements Serializable {
+public class Options {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7243571228898082279L;
-	private int nbrEssaisPlus, nbrEssaisMaster, tailleCodePlus, tailleCodeMaster, nbrCouleursMaster;
-	private boolean dev;
+	private Integer nbrEssaisPlus, nbrEssaisMaster, tailleCodePlus, tailleCodeMaster, nbrCouleursMaster;
+	private Boolean dev;
 
 	/**
 	 * 
@@ -83,27 +76,55 @@ public class Options implements Serializable {
 	}
 
 	public void sauvegarde() {
-		ObjectOutputStream oos;
+		Properties prop = new Properties();
+		OutputStream output = null;
 		try {
-			oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(new File("game.txt"))));
-			oos.writeObject(this);
-			oos.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			output = new FileOutputStream("config.properties");
+			prop.setProperty("nbrEssaisPlus", nbrEssaisPlus.toString());
+			prop.setProperty("nbrEssaisMaster", nbrEssaisMaster.toString());
+			prop.setProperty("tailleCodePlus", tailleCodePlus.toString());
+			prop.setProperty("tailleCodeMaster", tailleCodeMaster.toString());
+			prop.setProperty("nbrCouleursMaster", nbrCouleursMaster.toString());
+			prop.setProperty("dev", dev.toString());
+			prop.store(output, null);
+
+		} catch (IOException io) {
+			io.printStackTrace();
+		} finally {
+			if (output != null) {
+				try {
+					output.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
 		}
 	}
 
 	public void lecture() {
-		ObjectInputStream ois;
+		Properties prop = new Properties();
+		InputStream input = null;
 		try {
-			ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("game.txt"))));
-			// recupérations des données du fichier à faire ici !!!
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			input = new FileInputStream("config.properties");
+			prop.load(input);
+			nbrEssaisPlus = Integer.parseInt(prop.getProperty("nbrEssaisPlus"));
+			nbrEssaisMaster = Integer.parseInt(prop.getProperty("nbrEssaisMaster"));
+			tailleCodePlus = Integer.parseInt(prop.getProperty("tailleCodePlus"));
+			tailleCodeMaster = Integer.parseInt(prop.getProperty("tailleCodeMaster"));
+			nbrCouleursMaster = Integer.parseInt(prop.getProperty("nbrCouleursMaster"));
+			dev = Boolean.parseBoolean(prop.getProperty("dev"));
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}
