@@ -24,7 +24,7 @@ public class Options {
 	 * 
 	 */
 	public Options() {
-		// TODO Auto-generated constructor stub
+		lectureConfig();
 	}
 
 	public void setDev(boolean b) {
@@ -75,7 +75,7 @@ public class Options {
 		return this.nbrCouleursMaster;
 	}
 
-	public void sauvegarde() {
+	public void sauvegardeConfig() {
 		Properties prop = new Properties();
 		OutputStream output = null;
 		try {
@@ -102,7 +102,7 @@ public class Options {
 		}
 	}
 
-	public void lecture() {
+	public void lectureConfig() {
 		Properties prop = new Properties();
 		InputStream input = null;
 		try {
