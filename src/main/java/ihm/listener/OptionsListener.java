@@ -1,9 +1,9 @@
-package main.java.ihm.listener;
+package ihm.listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import main.java.ihm.OptionsDialogBox;
+import ihm.OptionsDialogBox;
 
 public class OptionsListener implements ActionListener {
 

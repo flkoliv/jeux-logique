@@ -1,13 +1,13 @@
 /**
  * 
  */
-package main.java.ihm.listener;
+package ihm.listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import main.PlusOuMoins.PlateauPlusOuMoins;
-import main.java.ihm.Main;
+import PlusOuMoins.PlateauPlusOuMoins;
+import ihm.Main;
 
 /**
  * @author flkoliv

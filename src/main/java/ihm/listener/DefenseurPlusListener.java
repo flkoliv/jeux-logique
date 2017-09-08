@@ -1,7 +1,7 @@
 /**
  * 
  */
-package main.java.ihm.listener;
+package ihm.listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

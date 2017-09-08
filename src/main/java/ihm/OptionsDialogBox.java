@@ -1,4 +1,4 @@
-package main.java.ihm;
+package ihm;
 
 import java.awt.Color;
 import java.awt.Dimension;

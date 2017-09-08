@@ -1,4 +1,4 @@
-package main.java.ihm;
+package ihm;
 
 import java.awt.Dimension;
 import java.text.ParseException;
@@ -13,7 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.text.MaskFormatter;
 
-import main.java.ihm.listener.PlusPanelOkButtonListener;
+import ihm.listener.PlusPanelOkButtonListener;
 
 public class PlusOuMoinsPanel extends JPanel {
 

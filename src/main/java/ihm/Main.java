@@ -1,7 +1,7 @@
 /**
  * 
  */
-package main.java.ihm;
+package ihm;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -15,15 +15,15 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import main.PlusOuMoins.PlateauPlusOuMoins;
-import main.java.ihm.listener.AideListener;
-import main.java.ihm.listener.ChallengerMasterListener;
-import main.java.ihm.listener.ChallengerPlusListener;
-import main.java.ihm.listener.DefenseurMasterListener;
-import main.java.ihm.listener.DefenseurPlusListener;
-import main.java.ihm.listener.DuelMasterListener;
-import main.java.ihm.listener.DuelPlusListener;
-import main.java.ihm.listener.OptionsListener;
+import PlusOuMoins.PlateauPlusOuMoins;
+import ihm.listener.AideListener;
+import ihm.listener.ChallengerMasterListener;
+import ihm.listener.ChallengerPlusListener;
+import ihm.listener.DefenseurMasterListener;
+import ihm.listener.DefenseurPlusListener;
+import ihm.listener.DuelMasterListener;
+import ihm.listener.DuelPlusListener;
+import ihm.listener.OptionsListener;
 
 /**
  * Classe principale du jeu
@@ -33,6 +33,10 @@ import main.java.ihm.listener.OptionsListener;
  */
 public class Main extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2999965498510953416L;
 	Object jeu;
 
 	/**
@@ -121,6 +125,7 @@ public class Main extends JFrame {
 	 */
 	public static void main(String[] args) {
 
+		@SuppressWarnings("unused")
 		Main f = new Main();
 	}
 
