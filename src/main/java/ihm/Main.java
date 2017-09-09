@@ -38,6 +38,8 @@ public class Main extends JFrame {
 	 */
 	private static final long serialVersionUID = -2999965498510953416L;
 	Object jeu;
+	Options options = new Options();
+	private static Main INSTANCE;
 
 	/**
 	 * Constructeur de la fenêtre principale de jeu
@@ -58,10 +60,7 @@ public class Main extends JFrame {
 		JPanel panneau = new JPanel();
 		panneau.add(image);
 		this.setContentPane(panneau);
-
 		this.setVisible(true);
-		// p.setResult(1235, "++-=");
-		// p.setResult(4587, "----");
 
 	}
 
@@ -91,7 +90,7 @@ public class Main extends JFrame {
 		JMenuItem aide = new JMenuItem("?");
 		aide.addActionListener(new AideListener());
 		JMenuItem options = new JMenuItem("Options");
-		options.addActionListener(new OptionsListener());
+		options.addActionListener(new OptionsListener(this));
 		JMenuItem quitter = new JMenuItem("Quitter");
 		quitter.addActionListener(new ActionListener() {
 			@Override
@@ -125,13 +124,24 @@ public class Main extends JFrame {
 	 */
 	public static void main(String[] args) {
 
-		@SuppressWarnings("unused")
-		Main f = new Main();
+		INSTANCE = new Main();
 	}
 
 	public void setJeu(PlateauPlusOuMoins plateauPlusOuMoins) {
 		this.jeu = plateauPlusOuMoins;
 
+	}
+
+	public void setOptions(Options o) {
+		this.options = o;
+	}
+
+	public Options getOptions() {
+		return options;
+	}
+
+	public static Main getInstance() {
+		return INSTANCE;
 	}
 
 }

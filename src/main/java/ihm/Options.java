@@ -27,6 +27,16 @@ public class Options {
 		lectureConfig();
 	}
 
+	public Options(Integer nbrEssaisPlus, Integer nbrEssaisMaster, Integer tailleCodePlus, Integer tailleCodeMaster,
+			Integer nbrCouleursMaster, Boolean dev) {
+		this.nbrEssaisPlus = nbrEssaisPlus;
+		this.nbrEssaisMaster = nbrEssaisMaster;
+		this.tailleCodePlus = tailleCodePlus;
+		this.tailleCodeMaster = tailleCodeMaster;
+		this.nbrCouleursMaster = nbrCouleursMaster;
+		this.dev = dev;
+	}
+
 	public void setDev(boolean b) {
 		this.dev = b;
 	}
@@ -81,8 +91,8 @@ public class Options {
 		try {
 			output = new FileOutputStream("config.properties");
 			prop.setProperty("nbrEssaisPlus", nbrEssaisPlus.toString());
-			prop.setProperty("nbrEssaisMaster", nbrEssaisMaster.toString());
 			prop.setProperty("tailleCodePlus", tailleCodePlus.toString());
+			prop.setProperty("nbrEssaisMaster", nbrEssaisMaster.toString());
 			prop.setProperty("tailleCodeMaster", tailleCodeMaster.toString());
 			prop.setProperty("nbrCouleursMaster", nbrCouleursMaster.toString());
 			prop.setProperty("dev", dev.toString());
@@ -124,6 +134,13 @@ public class Options {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+			} else {
+				nbrEssaisPlus = 10;
+				nbrEssaisMaster = 10;
+				tailleCodePlus = 4;
+				tailleCodeMaster = 4;
+				nbrCouleursMaster = 6;
+				dev = false;
 			}
 		}
 

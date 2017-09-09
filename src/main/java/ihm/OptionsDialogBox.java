@@ -9,10 +9,15 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
+
+import ihm.listener.OptionsCancelListener;
+import ihm.listener.OptionsOkListener;
 
 public class OptionsDialogBox extends JDialog {
 
@@ -21,11 +26,12 @@ public class OptionsDialogBox extends JDialog {
 	 */
 	private static final long serialVersionUID = 8901635042644317428L;
 
-	private JFormattedTextField nombreEssaisPOM, tailleCodePOM, nombreEssaisMaster, tailleCodeMaster;
+	private JTextField nombreEssaisPOM, tailleCodePOM, nombreEssaisMaster, tailleCodeMaster;
 	private JComboBox<Integer> nbrCouleursMaster;
 	private JCheckBox devMod;
+	private Main parent;
 
-	public OptionsDialogBox(JFrame parent, String title, boolean modal) {
+	public OptionsDialogBox(Main parent, String title, boolean modal) {
 		super(parent, title, modal);
 		this.setSize(550, 270);
 		this.setLocationRelativeTo(null);
@@ -33,34 +39,45 @@ public class OptionsDialogBox extends JDialog {
 		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.initComponent();
 		this.setVisible(true);
+
 	}
 
 	private void initComponent() {
 
-		// POM
+		// panel POM
 		JPanel panPOM = new JPanel();
 		panPOM.setBackground(Color.white);
 		panPOM.setPreferredSize(new Dimension(200, 60));
-		nombreEssaisPOM = new JFormattedTextField();
-		nombreEssaisPOM.setPreferredSize(new Dimension(25, 25));
-		tailleCodePOM = new JFormattedTextField();
-		tailleCodePOM.setPreferredSize(new Dimension(25, 25));
 		panPOM.setBorder(BorderFactory.createTitledBorder("Plus ou Moins"));
+		nombreEssaisPOM = new JTextField();
+		nombreEssaisPOM.setDocument(new JTextFieldLimit(20));
+		nombreEssaisPOM.setText(String.valueOf(Main.getInstance().getOptions().getNbrEssaisPlus()));
+		nombreEssaisPOM.setPreferredSize(new Dimension(25, 25));
+		tailleCodePOM = new JTextField();
+		tailleCodePOM.setDocument(new JTextFieldLimit(20));
+		tailleCodePOM.setText(String.valueOf(Main.getInstance().getOptions().getTailleCodePlus()));
+		tailleCodePOM.setPreferredSize(new Dimension(25, 25));
 		panPOM.add(new JLabel("Nombre d'essais"));
 		panPOM.add(nombreEssaisPOM);
 		panPOM.add(new JLabel("Longueur du Code"));
 		panPOM.add(tailleCodePOM);
 
+		// panel Master
 		JPanel panMaster = new JPanel();
 		panMaster.setBackground(Color.white);
 		panMaster.setPreferredSize(new Dimension(220, 60));
 		panMaster.setBorder(BorderFactory.createTitledBorder("Mastermind"));
-		nombreEssaisMaster = new JFormattedTextField();
+		nombreEssaisMaster = new JTextField();
+		nombreEssaisMaster.setDocument(new JTextFieldLimit(20));
+		nombreEssaisMaster.setText(String.valueOf(Main.getInstance().getOptions().getNbrEssaisMaster()));
 		nombreEssaisMaster.setPreferredSize(new Dimension(25, 25));
-		tailleCodeMaster = new JFormattedTextField();
+		tailleCodeMaster = new JTextField();
+		tailleCodeMaster.setDocument(new JTextFieldLimit(20));
+		tailleCodeMaster.setText(String.valueOf(Main.getInstance().getOptions().getTailleCodeMaster()));
 		tailleCodeMaster.setPreferredSize(new Dimension(25, 25));
 		Integer[] tab = { 4, 5, 6, 7, 8, 9, 10 };
 		nbrCouleursMaster = new JComboBox<Integer>(tab);
+		nbrCouleursMaster.setSelectedItem(Main.getInstance().getOptions().getNbrCouleursMaster());
 		panMaster.add(new JLabel("Nombre d'essais"));
 		panMaster.add(nombreEssaisMaster);
 		panMaster.add(new JLabel("Longueur du Code"));
@@ -68,23 +85,75 @@ public class OptionsDialogBox extends JDialog {
 		panMaster.add(new JLabel("Nombres de couleurs"));
 		panMaster.add(nbrCouleursMaster);
 
+		// panel mode dev
 		JPanel panMode = new JPanel();
 		panMode.setBackground(Color.white);
 		panMode.setPreferredSize(new Dimension(220, 60));
 		panMode.setBorder(BorderFactory.createTitledBorder("Mode Dev"));
 		panMode.add(new JLabel("Mode developpeur"));
 		devMod = new JCheckBox();
+		devMod.setSelected(Main.getInstance().getOptions().getDev());
 		panMode.add(devMod);
 
+		// panel boutons
 		JPanel panBoutons = new JPanel();
 		panBoutons.setBackground(Color.white);
-		panBoutons.add(new JButton("OK"));
-		panBoutons.add(new JButton("Annuler"));
+		JButton okButton = new JButton("OK");
+		okButton.addActionListener(new OptionsOkListener(parent, this));
+		JButton cancelButton = new JButton("Annuler");
+		cancelButton.addActionListener(new OptionsCancelListener(this));
+		panBoutons.add(okButton);
+		panBoutons.add(cancelButton);
 
 		this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
 		this.getContentPane().add(panPOM);
 		this.getContentPane().add(panMaster);
 		this.getContentPane().add(panMode);
 		this.getContentPane().add(panBoutons);
+	}
+
+	public Options getOptions() {
+		int a = Integer.parseInt(nombreEssaisPOM.getText());
+		int b = Integer.parseInt(nombreEssaisMaster.getText());
+		int c = Integer.parseInt(tailleCodePOM.getText());
+		int d = Integer.parseInt(tailleCodeMaster.getText());
+		int e = (int) nbrCouleursMaster.getSelectedItem();
+		boolean f = devMod.isSelected();
+		Options o = new Options(a, b, c, d, e, f);
+		if (a > 0 && b > 0 && c > 0 && d > 0) {
+			return o;
+		} else {
+			return null;
+		}
+
+	}
+}
+
+class JTextFieldLimit extends PlainDocument {
+	/**
+	 * Classe pour empêcher des saisies autre q'un integer supérieure à la limite
+	 * dans un JTextField
+	 */
+	private static final long serialVersionUID = -8330008807748451055L;
+	private int limit;
+
+	JTextFieldLimit(int limit) {
+		super();
+		this.limit = limit;
+	}
+
+	@Override
+	public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+		if (str == null)
+			return;
+		try {
+			Integer i = Integer.parseInt(this.getText(0, getLength()) + str);
+			if (i <= limit) {
+				super.insertString(offset, str, attr);
+			}
+		} catch (Exception e) {
+			// ..On ne fait rien
+		}
+
 	}
 }
