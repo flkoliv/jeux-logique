@@ -7,6 +7,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * 
  */
@@ -19,6 +22,7 @@ public class Options {
 
 	private Integer nbrEssaisPlus, nbrEssaisMaster, tailleCodePlus, tailleCodeMaster, nbrCouleursMaster;
 	private Boolean dev;
+	private static final Logger logger = LogManager.getLogger();
 
 	/**
 	 * 
@@ -89,7 +93,7 @@ public class Options {
 		Properties prop = new Properties();
 		OutputStream output = null;
 		try {
-			output = new FileOutputStream("config.properties");
+			output = new FileOutputStream("src/main/ressources/config.properties");
 			prop.setProperty("nbrEssaisPlus", nbrEssaisPlus.toString());
 			prop.setProperty("tailleCodePlus", tailleCodePlus.toString());
 			prop.setProperty("nbrEssaisMaster", nbrEssaisMaster.toString());
@@ -116,7 +120,7 @@ public class Options {
 		Properties prop = new Properties();
 		InputStream input = null;
 		try {
-			input = new FileInputStream("config.properties");
+			input = new FileInputStream("src/main/ressources/config.properties");
 			prop.load(input);
 			nbrEssaisPlus = Integer.parseInt(prop.getProperty("nbrEssaisPlus"));
 			nbrEssaisMaster = Integer.parseInt(prop.getProperty("nbrEssaisMaster"));
@@ -124,9 +128,9 @@ public class Options {
 			tailleCodeMaster = Integer.parseInt(prop.getProperty("tailleCodeMaster"));
 			nbrCouleursMaster = Integer.parseInt(prop.getProperty("nbrCouleursMaster"));
 			dev = Boolean.parseBoolean(prop.getProperty("dev"));
-
+			logger.debug("lecture du fichier config.properties");
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			// ex.printStackTrace();
 		} finally {
 			if (input != null) {
 				try {
@@ -141,6 +145,8 @@ public class Options {
 				tailleCodeMaster = 4;
 				nbrCouleursMaster = 6;
 				dev = false;
+				sauvegardeConfig();
+				logger.debug("lecture du fichier config.properties impossible. Utilisation des valeurs par défaut.");
 			}
 		}
 

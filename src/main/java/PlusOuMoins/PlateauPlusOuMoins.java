@@ -13,18 +13,18 @@ import ihm.PlusOuMoinsPanel;
 public class PlateauPlusOuMoins {
 	int nbrEssais = 5;
 	int longueurCode = 4;
-	JoueurPlusouMoins attaquant;
-	JoueurPlusouMoins defenseur;
+	Competiteur attaquant;
+	Competiteur defenseur;
 	int code;
-	Main fenetre;
 
-	public PlateauPlusOuMoins(Main fen) {
-		this.fenetre = fen;
-		PlusOuMoinsPanel p = new PlusOuMoinsPanel(nbrEssais, longueurCode);
-		fenetre.getContentPane().removeAll();
-		fenetre.getContentPane().repaint();
-		fenetre.getContentPane().add(p);
-		fenetre.getContentPane().validate();
+	public PlateauPlusOuMoins() {
+
+		PlusOuMoinsPanel p = new PlusOuMoinsPanel(Main.getInstance().getOptions().getNbrEssaisPlus(),
+				Main.getInstance().getOptions().getTailleCodePlus());
+		Main.getInstance().getContentPane().removeAll();
+		Main.getInstance().getContentPane().repaint();
+		Main.getInstance().getContentPane().add(p);
+		Main.getInstance().getContentPane().validate();
 	}
 
 }

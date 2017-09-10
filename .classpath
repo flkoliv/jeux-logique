@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/ressources"/>
 	<classpathentry kind="src" path="lib"/>
+	<classpathentry kind="lib" path="lib/log4j-api-2.9.0.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-core-2.9.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

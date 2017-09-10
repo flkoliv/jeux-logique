@@ -15,15 +15,9 @@ import ihm.Main;
  */
 public class ChallengerPlusListener implements ActionListener {
 
-	private Main fenetre;
-
-	public ChallengerPlusListener(Main p) {
-		this.fenetre = p;
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		fenetre.setJeu(new PlateauPlusOuMoins(fenetre));
+		Main.getInstance().setJeu(new PlateauPlusOuMoins());
 
 		/*
 		 * PlusOuMoinsPanel p = new PlusOuMoinsPanel(12);

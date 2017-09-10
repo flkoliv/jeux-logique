@@ -16,9 +16,7 @@ public class OptionsListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		// JOptionPane.showMessageDialog(null, "Options", "Attention",
-		// JOptionPane.WARNING_MESSAGE);
+
 		OptionsDialogBox ob = new OptionsDialogBox(this.main, "Options", true);
 
 	}

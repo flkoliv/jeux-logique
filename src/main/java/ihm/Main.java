@@ -15,6 +15,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import PlusOuMoins.PlateauPlusOuMoins;
 import ihm.listener.AideListener;
 import ihm.listener.ChallengerMasterListener;
@@ -37,9 +40,10 @@ public class Main extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -2999965498510953416L;
-	Object jeu;
-	Options options = new Options();
+	private Object jeu;
+	private Options options = new Options();
 	private static Main INSTANCE;
+	private static final Logger logger = LogManager.getLogger();
 
 	/**
 	 * Constructeur de la fenêtre principale de jeu
@@ -68,6 +72,7 @@ public class Main extends JFrame {
 	 * initialise le menu de la fenêtre principale
 	 */
 	private void initialiseMenu() {
+		logger.trace("initialisation interface graphique principale");
 		JMenuBar menuBar = new JMenuBar();
 		JMenu jeuxMenu = new JMenu("Jeux");
 		JMenu optionsMenu = new JMenu("Options");
@@ -76,7 +81,7 @@ public class Main extends JFrame {
 		JMenu masterMind = new JMenu("Mastermind");
 
 		JMenuItem challengerPlus = new JMenuItem("Challenger");
-		challengerPlus.addActionListener(new ChallengerPlusListener(this));
+		challengerPlus.addActionListener(new ChallengerPlusListener());
 		JMenuItem defenseurPlus = new JMenuItem("Defenseur");
 		defenseurPlus.addActionListener(new DefenseurPlusListener());
 		JMenuItem duelPlus = new JMenuItem("Duel");
@@ -124,7 +129,16 @@ public class Main extends JFrame {
 	 */
 	public static void main(String[] args) {
 
+		logger.info("lancement programme");
 		INSTANCE = new Main();
+		for (int i = 0; i < args.length; i++) {
+			if (args[i].equals("dev")) { // si argument ligne de commande = dev
+				INSTANCE.getOptions().setDev(true);
+				INSTANCE.getOptions().sauvegardeConfig();
+			}
+
+		}
+
 	}
 
 	public void setJeu(PlateauPlusOuMoins plateauPlusOuMoins) {

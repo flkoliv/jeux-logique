@@ -1,12 +1,9 @@
-/**
- * 
- */
 package PlusOuMoins;
 
 /**
  * @author flkoliv
  *
  */
-public interface JoueurPlusouMoins {
+public class JoueurOrdinateur extends Competiteur {
 
 }
