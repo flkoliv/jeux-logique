@@ -6,7 +6,9 @@ package ihm.listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
+import PlusOuMoins.PlateauPlusOuMoins;
+import common.TypeJeux;
+import ihm.Main;
 
 /**
  * @author flkoliv
@@ -17,7 +19,7 @@ public class DuelPlusListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		JOptionPane.showMessageDialog(null, "Plus ou Moins : Duel", "Attention", JOptionPane.WARNING_MESSAGE);
+		Main.getInstance().setJeu(new PlateauPlusOuMoins(TypeJeux.DUEL));
 	}
 
 }

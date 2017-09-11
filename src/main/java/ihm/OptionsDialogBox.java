@@ -12,10 +12,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
 
+import common.Options;
 import ihm.listener.OptionsCancelListener;
 import ihm.listener.OptionsOkListener;
 
@@ -50,11 +48,11 @@ public class OptionsDialogBox extends JDialog {
 		panPOM.setPreferredSize(new Dimension(200, 60));
 		panPOM.setBorder(BorderFactory.createTitledBorder("Plus ou Moins"));
 		nombreEssaisPOM = new JTextField();
-		nombreEssaisPOM.setDocument(new JTextFieldLimit(20));
+		nombreEssaisPOM.setDocument(new JTextFieldLimited(20));
 		nombreEssaisPOM.setText(String.valueOf(Main.getInstance().getOptions().getNbrEssaisPlus()));
 		nombreEssaisPOM.setPreferredSize(new Dimension(25, 25));
 		tailleCodePOM = new JTextField();
-		tailleCodePOM.setDocument(new JTextFieldLimit(20));
+		tailleCodePOM.setDocument(new JTextFieldLimited(20));
 		tailleCodePOM.setText(String.valueOf(Main.getInstance().getOptions().getTailleCodePlus()));
 		tailleCodePOM.setPreferredSize(new Dimension(25, 25));
 		panPOM.add(new JLabel("Nombre d'essais"));
@@ -68,11 +66,11 @@ public class OptionsDialogBox extends JDialog {
 		panMaster.setPreferredSize(new Dimension(220, 60));
 		panMaster.setBorder(BorderFactory.createTitledBorder("Mastermind"));
 		nombreEssaisMaster = new JTextField();
-		nombreEssaisMaster.setDocument(new JTextFieldLimit(20));
+		nombreEssaisMaster.setDocument(new JTextFieldLimited(20));
 		nombreEssaisMaster.setText(String.valueOf(Main.getInstance().getOptions().getNbrEssaisMaster()));
 		nombreEssaisMaster.setPreferredSize(new Dimension(25, 25));
 		tailleCodeMaster = new JTextField();
-		tailleCodeMaster.setDocument(new JTextFieldLimit(20));
+		tailleCodeMaster.setDocument(new JTextFieldLimited(20));
 		tailleCodeMaster.setText(String.valueOf(Main.getInstance().getOptions().getTailleCodeMaster()));
 		tailleCodeMaster.setPreferredSize(new Dimension(25, 25));
 		Integer[] tab = { 4, 5, 6, 7, 8, 9, 10 };
@@ -124,35 +122,6 @@ public class OptionsDialogBox extends JDialog {
 			return o;
 		} else {
 			return null;
-		}
-
-	}
-}
-
-class JTextFieldLimit extends PlainDocument {
-	/**
-	 * Classe pour empêcher des saisies autre q'un integer supérieure à la limite
-	 * dans un JTextField
-	 */
-	private static final long serialVersionUID = -8330008807748451055L;
-	private int limit;
-
-	JTextFieldLimit(int limit) {
-		super();
-		this.limit = limit;
-	}
-
-	@Override
-	public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
-		if (str == null)
-			return;
-		try {
-			Integer i = Integer.parseInt(this.getText(0, getLength()) + str);
-			if (i <= limit) {
-				super.insertString(offset, str, attr);
-			}
-		} catch (Exception e) {
-			// ..On ne fait rien
 		}
 
 	}

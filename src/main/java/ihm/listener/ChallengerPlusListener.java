@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import PlusOuMoins.PlateauPlusOuMoins;
+import common.TypeJeux;
 import ihm.Main;
 
 /**
@@ -17,7 +18,7 @@ public class ChallengerPlusListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Main.getInstance().setJeu(new PlateauPlusOuMoins());
+		Main.getInstance().setJeu(new PlateauPlusOuMoins(TypeJeux.CHALLENGER));
 
 		/*
 		 * PlusOuMoinsPanel p = new PlusOuMoinsPanel(12);

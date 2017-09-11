@@ -19,6 +19,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import PlusOuMoins.PlateauPlusOuMoins;
+import common.Jeu;
+import common.Options;
 import ihm.listener.AideListener;
 import ihm.listener.ChallengerMasterListener;
 import ihm.listener.ChallengerPlusListener;
@@ -40,7 +42,7 @@ public class Main extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -2999965498510953416L;
-	private Object jeu;
+	private Jeu jeu;
 	private Options options = new Options();
 	private static Main INSTANCE;
 	private static final Logger logger = LogManager.getLogger();
@@ -146,6 +148,10 @@ public class Main extends JFrame {
 
 	}
 
+	public Jeu getJeu() {
+		return jeu;
+	}
+
 	public void setOptions(Options o) {
 		this.options = o;
 	}
@@ -158,4 +164,13 @@ public class Main extends JFrame {
 		return INSTANCE;
 	}
 
+	public void setBackground() {
+		ImageIcon icone = new ImageIcon("src/main/ressources/mastermind.png");
+		JLabel image = new JLabel(icone);
+		this.add(image);
+		JPanel panneau = new JPanel();
+		panneau.add(image);
+		this.setContentPane(panneau);
+		this.validate();
+	}
 }
