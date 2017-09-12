@@ -6,12 +6,19 @@ package PlusOuMoins;
 import javax.swing.JOptionPane;
 
 import ihm.Main;
+import ihm.PlusOuMoinsPanel;
 
 /**
  * @author flkoliv
  *
  */
 public class JoueurHumain extends Competiteur {
+
+	public JoueurHumain(int nbrEssais, int nbrChrCode) {
+		panel = new PlusOuMoinsPanel(nbrEssais, nbrChrCode, true);
+		this.nbrChrCode = nbrChrCode;
+		this.nbrEssais = nbrEssais;
+	}
 
 	@Override
 	public String getNewCode() {

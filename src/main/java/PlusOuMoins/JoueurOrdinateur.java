@@ -1,6 +1,6 @@
 package PlusOuMoins;
 
-import ihm.Main;
+import ihm.PlusOuMoinsPanel;
 
 /**
  * @author flkoliv
@@ -8,18 +8,24 @@ import ihm.Main;
  */
 public class JoueurOrdinateur extends Competiteur {
 
+	public JoueurOrdinateur(int nbrEssais, int nbrChrCode) {
+		panel = new PlusOuMoinsPanel(nbrEssais, nbrChrCode, false);
+		this.nbrChrCode = nbrChrCode;
+		this.nbrEssais = nbrEssais;
+	}
+
 	@Override
 	public String getNewCode() {
 
 		double c = Math.random();
 		String code = "";
-		int nbrChiffres = Main.getInstance().getOptions().getTailleCodePlus();
-		for (int i = 0; i < nbrChiffres; i++) {
+
+		for (int i = 0; i < nbrChrCode; i++) {
 			c = c * 10;
 		}
 
 		code = String.valueOf((int) c);
-		while (code.length() < nbrChiffres) {
+		while (code.length() < nbrChrCode) {
 			code = "0" + code;
 		}
 
@@ -30,7 +36,7 @@ public class JoueurOrdinateur extends Competiteur {
 
 	@Override
 	public void getProposition() {
-		Main.getInstance().getJeu().getPanel().setProposition(getNewCode());
+		panel.setProposition(getNewCode());
 		try {
 			Thread.sleep(1000);
 

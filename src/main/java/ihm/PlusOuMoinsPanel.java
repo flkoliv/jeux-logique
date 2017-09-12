@@ -1,11 +1,11 @@
 package ihm;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,35 +26,50 @@ public class PlusOuMoinsPanel extends JPanel implements Panel {
 	private JPanel saisie;
 	private JLabel intitule;
 	private int taille;
-	private int emptyRow;
+	private int emptyRow = 0;
 
 	JTable tab;
 
-	public PlusOuMoinsPanel(int taille, int longueurCode) {
+	public PlusOuMoinsPanel(int taille, int longueurCode, Boolean humain) {
 		this.taille = taille;
-		this.emptyRow = 0;
-		intitule = new JLabel("Entrez votre valeur");
+
 		saisie = new JPanel();
 		saisie.setLayout(new BoxLayout(saisie, BoxLayout.LINE_AXIS));
-
-		jtf = new JFormattedTextField();
+		saisie.setMaximumSize(new Dimension(275, 25));
+		jtf = new JTextField();
 		jtf.setDocument(new JTextFieldLimited(0, longueurCode));
+		okButton = new JButton("OK");
+		okButton.setMaximumSize(new Dimension(40, 20));
+		okButton.addActionListener(new PlusPanelOkButtonListener(jtf));
 
+		if (humain) {
+			intitule = new JLabel("Votre proposition : ");
+
+		} else {
+			intitule = new JLabel("Proposition Ordinateur : ");
+			jtf.setEditable(false);
+			okButton.setVisible(false);
+		}
+
+		saisie.add(intitule);
+		saisie.add(Box.createRigidArea(new Dimension(10, 0)));
 		saisie.add(jtf);
 		saisie.add(Box.createRigidArea(new Dimension(10, 0)));
-		okButton = new JButton("OK");
-		okButton.addActionListener(new PlusPanelOkButtonListener());
 		saisie.add(okButton);
 
 		String title[] = { "Proposition", "Résultat" };
 		Object[][] tableau = new Object[this.taille][2];
 		tab = new JTable(tableau, title);
+		tab.setEnabled(false);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		this.add(intitule);
+
 		this.add(Box.createRigidArea(new Dimension(0, 15)));
-		this.add(saisie);
+		this.add(saisie, BorderLayout.NORTH);
 		this.add(Box.createRigidArea(new Dimension(0, 15)));
-		this.add(new JScrollPane(tab));
+		JScrollPane jsp = new JScrollPane(tab);
+		jsp.setMaximumSize(new Dimension(275, 550));
+		this.add(jsp, BorderLayout.SOUTH);
+		this.setPreferredSize(new Dimension(275, 700));
 		this.setVisible(true);
 	}
 
@@ -96,4 +111,5 @@ public class PlusOuMoinsPanel extends JPanel implements Panel {
 		jtf.setText(string);
 
 	}
+
 }

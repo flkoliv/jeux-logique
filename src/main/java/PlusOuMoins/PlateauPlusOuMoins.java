@@ -12,7 +12,6 @@ import common.Jeu;
 import common.Panel;
 import common.TypeJeux;
 import ihm.Main;
-import ihm.PlusOuMoinsPanel;
 
 /**
  * @author flkoliv
@@ -24,12 +23,11 @@ public class PlateauPlusOuMoins extends Thread implements Jeu {
 	private Competiteur attaquant;
 	private Competiteur defenseur;
 	private String code;
+	private String code2;
 	private TypeJeux type;
-	private PlusOuMoinsPanel panel;
-	private PlusOuMoinsPanel panel2;
 	private Main fenetre;
 	private static final Logger logger = LogManager.getLogger();
-	private boolean gagne = false;
+	private int gagne = 3;// 0 : gagne / 1:perdu / 2:exaeqo
 
 	public PlateauPlusOuMoins(TypeJeux t) {
 		this.type = t;
@@ -38,45 +36,47 @@ public class PlateauPlusOuMoins extends Thread implements Jeu {
 		longueurCode = Main.getInstance().getOptions().getTailleCodePlus();
 
 		if (t == TypeJeux.CHALLENGER) {
-
-			panel = new PlusOuMoinsPanel(nbrEssais, longueurCode);
+			attaquant = new JoueurHumain(nbrEssais, longueurCode);
+			defenseur = new JoueurOrdinateur(nbrEssais, longueurCode);
 			fenetre.getContentPane().removeAll();
+			fenetre.getContentPane().add(attaquant.getPanel());
 			fenetre.getContentPane().repaint();
-			fenetre.getContentPane().add(panel);
 			fenetre.getContentPane().validate();
-			attaquant = new JoueurHumain();
-			defenseur = new JoueurOrdinateur();
+
 			start();
 
 		} else if (t == TypeJeux.DEFENSEUR) {
-
-			panel = new PlusOuMoinsPanel(nbrEssais, longueurCode);
+			attaquant = new JoueurOrdinateur(nbrEssais, longueurCode);
+			defenseur = new JoueurHumain(nbrEssais, longueurCode);
 			fenetre.getContentPane().removeAll();
 			fenetre.getContentPane().repaint();
-			fenetre.getContentPane().add(panel);
+			fenetre.getContentPane().add(attaquant.getPanel());
 			fenetre.getContentPane().validate();
-			attaquant = new JoueurOrdinateur();
-			defenseur = new JoueurHumain();
+
 			start();
 
 		} else if (t == TypeJeux.DUEL) {
-			panel = new PlusOuMoinsPanel(nbrEssais, longueurCode);
-			panel2 = new PlusOuMoinsPanel(nbrEssais, longueurCode);
+
+			attaquant = new JoueurHumain(nbrEssais, longueurCode);
+			defenseur = new JoueurOrdinateur(nbrEssais, longueurCode);
 			fenetre.getContentPane().removeAll();
 			fenetre.getContentPane().repaint();
-			fenetre.getContentPane().add(panel);
-			fenetre.getContentPane().add(panel2);
+			fenetre.getContentPane().add(attaquant.getPanel());
+			fenetre.getContentPane().add(defenseur.getPanel());
 			fenetre.getContentPane().validate();
-			attaquant = new JoueurHumain();
-			defenseur = new JoueurOrdinateur();
-			// start();
+
+			start();
 
 		}
 	}
 
 	@Override
 	public synchronized void run() {
+		String result;
 		code = defenseur.getNewCode();
+		if (type == TypeJeux.DUEL) {
+			code2 = attaquant.getNewCode();
+		}
 		int nbrToursJoues = 0;
 		String proposition = "";
 		logger.info("Début du jeu");
@@ -87,11 +87,10 @@ public class PlateauPlusOuMoins extends Thread implements Jeu {
 				} else {
 					attaquant.getProposition();
 				}
-
-				proposition = panel.getProposition();
-				panel.cleanProposition();
+				proposition = attaquant.getPanel().getProposition();
+				attaquant.getPanel().cleanProposition();
 				logger.debug("tour joué : " + (nbrToursJoues + 1) + "proposition :" + proposition);
-				String result = "";
+				result = "";
 				for (int i = 0; i < code.length(); i++) {
 					int j = code.charAt(i);
 					int k = proposition.charAt(i);
@@ -102,14 +101,32 @@ public class PlateauPlusOuMoins extends Thread implements Jeu {
 					} else {
 						result = result + "- ";
 					}
-
 				}
-				panel.setResult(proposition, result);
+				attaquant.getPanel().setResult(proposition, result);
 				if (code.equals(proposition)) {
-					gagne = true;
+					gagne = 0;
 					break;
-
 				}
+				if (type == TypeJeux.DUEL) { // si c'est un duel, demander une proposition aux deuxieme joueur
+					defenseur.getProposition();
+					proposition = defenseur.getPanel().getProposition();
+					defenseur.getPanel().cleanProposition();
+					logger.debug("tour joué : " + (nbrToursJoues + 1) + "proposition :" + proposition);
+					result = "";
+					for (int i = 0; i < code.length(); i++) {
+						int j = code.charAt(i);
+						int k = proposition.charAt(i);
+						if (j == k) {
+							result = result + "= ";
+						} else if (j > k) {
+							result = result + "+ ";
+						} else {
+							result = result + "- ";
+						}
+					}
+					defenseur.getPanel().setResult(proposition, result);
+				}
+
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -118,14 +135,15 @@ public class PlateauPlusOuMoins extends Thread implements Jeu {
 		} while (nbrToursJoues < nbrEssais);
 		String message;
 
-		if (attaquant.getClass() == JoueurOrdinateur.class) {
-			gagne = !gagne;
-		}
+		if (attaquant.getClass() == JoueurOrdinateur.class) { // fin du jeu et affichage d'un message
 
-		if (gagne) {
+		}
+		if (gagne == 0) {
 			message = "Vous avez gagné !";
-		} else {
+		} else if (gagne == 1) {
 			message = "Vous avez perdu !";
+		} else {
+			message = "Ex Aequo !";
 		}
 		message = message + "\n Voulez-vous recommencer ?";
 		int o = JOptionPane.showConfirmDialog(null, message, "Attention", JOptionPane.YES_NO_OPTION,
@@ -143,8 +161,8 @@ public class PlateauPlusOuMoins extends Thread implements Jeu {
 	}
 
 	@Override
-	public Panel getPanel() {
-		return panel;
+	public Panel getPanel() { // à supprimer !!!
+		return null;
 	}
 
 }
