@@ -10,13 +10,545 @@
     <packagedElement xmi:type="uml:Package" xmi:id="_IfG_QJPjEeeFzoTTkxK9Yg" name="jeux-logique">
       <packagedElement xmi:type="uml:Package" xmi:id="_Ih834JPjEeeFzoTTkxK9Yg" name="main">
         <packagedElement xmi:type="uml:Package" xmi:id="_IiBwYJPjEeeFzoTTkxK9Yg" name="java">
-          <packagedElement xmi:type="uml:Package" xmi:id="_IiDlkJPjEeeFzoTTkxK9Yg" name="ihm">
-            <packagedElement xmi:type="uml:Class" xmi:id="_IiJFIJPjEeeFzoTTkxK9Yg" name="Main" visibility="public">
-              <generalization xmi:type="uml:Generalization" xmi:id="_IilKAJPjEeeFzoTTkxK9Yg" general="_IiQZ4JPjEeeFzoTTkxK9Yg"/>
-              <ownedAttribute xmi:type="uml:Property" xmi:id="_Ii8WYJPjEeeFzoTTkxK9Yg" name="jeu" visibility="private" type="_IiylYJPjEeeFzoTTkxK9Yg" isUnique="false"/>
-              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IjWmEJPjEeeFzoTTkxK9Yg" name="Main" specification="_IjAn0JPjEeeFzoTTkxK9Yg">
-                <language>JAVA</language>
-                <body>&#xD;
+          <packagedElement xmi:type="uml:Package" xmi:id="_IiDlkJPjEeeFzoTTkxK9Yg" name="ihm"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_H6JtQJljEeeVh8pOL-FAVQ" name="PlusOuMoins">
+        <packagedElement xmi:type="uml:Class" xmi:id="_H6PM0JljEeeVh8pOL-FAVQ" name="JoueurHumain" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_H6SQIJljEeeVh8pOL-FAVQ" general="_H6Qa8JljEeeVh8pOL-FAVQ"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_H6o1cJljEeeVh8pOL-FAVQ" name="JoueurHumain" specification="_H6V6gJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    panel = new PlusOuMoinsPanel(nbrEssais, nbrChrCode, true);&#xD;
+    this.nbrChrCode = nbrChrCode;&#xD;
+    this.nbrEssais = nbrEssais;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_H6234JljEeeVh8pOL-FAVQ" name="getNewCode" specification="_H6tt8JljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    String c = &quot;&quot;;&#xD;
+    int nbrChiffres = Main.getInstance().getOptions().getTailleCodePlus();&#xD;
+    boolean b = true;&#xD;
+    do {&#xD;
+        try {&#xD;
+            c = JOptionPane.showInputDialog(null, &quot;Veuillez donner un code de &quot; + nbrChiffres + &quot; chiffres!&quot;, &quot;Nouveau Code&quot;, JOptionPane.QUESTION_MESSAGE);&#xD;
+            Integer.parseInt(c);&#xD;
+            if (c.length() == nbrChiffres) {&#xD;
+                b = false;&#xD;
+                super.logger.debug(&quot;nouveau code : &quot; + c);&#xD;
+            } else {&#xD;
+                b = true;&#xD;
+                super.logger.debug(&quot;code rentré n'ayant pas la bonne longueur&quot;);&#xD;
+            }&#xD;
+        } catch (Exception e) {&#xD;
+            super.logger.debug(&quot;code rentré ne contenant pas que des chiffres&quot;);&#xD;
+        }&#xD;
+    } while (b);&#xD;
+    return c;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_H6-zsJljEeeVh8pOL-FAVQ" name="getProposition" specification="_H67wYJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+// TODO Auto-generated method stub&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H6V6gJljEeeVh8pOL-FAVQ" name="JoueurHumain" visibility="public" method="_H6o1cJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H6g5oJljEeeVh8pOL-FAVQ" name="nbrEssais">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H6mZMJljEeeVh8pOL-FAVQ" name="nbrChrCode">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H6tt8JljEeeVh8pOL-FAVQ" name="getNewCode" visibility="public" method="_H6234JljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H60boJljEeeVh8pOL-FAVQ" type="_IjrWMJPjEeeFzoTTkxK9Yg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H67wYJljEeeVh8pOL-FAVQ" name="getProposition" visibility="public" method="_H6-zsJljEeeVh8pOL-FAVQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_H6Qa8JljEeeVh8pOL-FAVQ" name="Competiteur" visibility="public" isAbstract="true">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H7ysAJljEeeVh8pOL-FAVQ" name="panel" visibility="protected" type="_H7xd4JljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H71vUJljEeeVh8pOL-FAVQ" name="nbrChrCode" visibility="protected" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H75ZsJljEeeVh8pOL-FAVQ" name="nbrEssais" visibility="protected" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H8J4YJljEeeVh8pOL-FAVQ" name="logger" visibility="protected" isLeaf="true" type="_H8BVgJljEeeVh8pOL-FAVQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_H8OJ0JljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>LogManager.getLogger()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_H8aXEJljEeeVh8pOL-FAVQ" name="getPanel" specification="_H8WssJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return panel;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H8RNIJljEeeVh8pOL-FAVQ" name="getNewCode" visibility="public" isAbstract="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H8UQcJljEeeVh8pOL-FAVQ" type="_IjrWMJPjEeeFzoTTkxK9Yg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H8WssJljEeeVh8pOL-FAVQ" name="getPanel" visibility="public" method="_H8aXEJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H8Yh4JljEeeVh8pOL-FAVQ" type="_H7xd4JljEeeVh8pOL-FAVQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H8eBcJljEeeVh8pOL-FAVQ" name="getProposition" visibility="public" isAbstract="true"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_H7KZ4JljEeeVh8pOL-FAVQ" name="JoueurOrdinateur" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_H7MPEJljEeeVh8pOL-FAVQ" general="_H6Qa8JljEeeVh8pOL-FAVQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H7OrUJljEeeVh8pOL-FAVQ" name="rechercheCode" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H7SVsJljEeeVh8pOL-FAVQ" name="lastProposition" visibility="private" type="_IjrWMJPjEeeFzoTTkxK9Yg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_H7Ux8JljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot;&quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H7XOMJljEeeVh8pOL-FAVQ" name="lastResult" visibility="private" type="_IjrWMJPjEeeFzoTTkxK9Yg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_H7ZqcJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot;&quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_H7kCgJljEeeVh8pOL-FAVQ" name="JoueurOrdinateur" specification="_H7aRgJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    panel = new PlusOuMoinsPanel(nbrEssais, nbrChrCode, false);&#xD;
+    this.nbrChrCode = nbrChrCode;&#xD;
+    this.nbrEssais = nbrEssais;&#xD;
+    rechercheCode = new int[nbrChrCode][2];&#xD;
+    for (int i = 0; i &lt; nbrChrCode; i++) {&#xD;
+        rechercheCode[i][0] = 0;&#xD;
+        rechercheCode[i][1] = 10;&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_H7l3sJljEeeVh8pOL-FAVQ" name="getNewCode" specification="_H7kpkJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    double c = Math.random();&#xD;
+    String code = &quot;&quot;;&#xD;
+    for (int i = 0; i &lt; nbrChrCode; i++) {&#xD;
+        c = c * 10;&#xD;
+    }&#xD;
+    code = String.valueOf((int) c);&#xD;
+    while (code.length() &lt; nbrChrCode) {&#xD;
+        code = &quot;0&quot; + code;&#xD;
+    }&#xD;
+    super.logger.debug(&quot;Nouveau code généré par l'ordinateur : &quot; + code);&#xD;
+    return code;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_H7qJIJljEeeVh8pOL-FAVQ" name="getProposition" specification="_H7oT8JljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    lastResult = panel.getLastResult();&#xD;
+    if (!lastResult.equals(&quot;&quot;)) {&#xD;
+        System.out.println(&quot;lastResult = &quot; + lastResult);&#xD;
+        for (int i = 0; i &lt; nbrChrCode; i++) {&#xD;
+            String c = &quot;&quot; + lastProposition.charAt(i);&#xD;
+            if (lastResult.charAt(i) == '+') {&#xD;
+                rechercheCode[i][0] = Integer.parseInt(c);&#xD;
+            } else if (lastResult.charAt(i) == '-') {&#xD;
+                rechercheCode[i][1] = Integer.parseInt(c);&#xD;
+            } else if (lastResult.charAt(i) == '=') {&#xD;
+                rechercheCode[i][0] = Integer.parseInt(c);&#xD;
+                rechercheCode[i][1] = Integer.parseInt(c);&#xD;
+            }&#xD;
+        }&#xD;
+    }&#xD;
+    String prop = &quot;&quot;;&#xD;
+    for (int i = 0; i &lt; nbrChrCode; i++) {&#xD;
+        prop = prop + ((rechercheCode[i][0] + rechercheCode[i][1]) / 2);&#xD;
+    }&#xD;
+    lastProposition = prop;&#xD;
+    panel.setProposition(prop);&#xD;
+    try {&#xD;
+        Thread.sleep(1000);&#xD;
+    } catch (InterruptedException e) {&#xD;
+        e.printStackTrace();&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H7aRgJljEeeVh8pOL-FAVQ" name="JoueurOrdinateur" visibility="public" method="_H7kCgJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H7g_MJljEeeVh8pOL-FAVQ" name="nbrEssais">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H7i0YJljEeeVh8pOL-FAVQ" name="nbrChrCode">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H7kpkJljEeeVh8pOL-FAVQ" name="getNewCode" visibility="public" method="_H7l3sJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H7lQoJljEeeVh8pOL-FAVQ" type="_IjrWMJPjEeeFzoTTkxK9Yg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H7oT8JljEeeVh8pOL-FAVQ" name="getProposition" visibility="public" method="_H7qJIJljEeeVh8pOL-FAVQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_H8pAkJljEeeVh8pOL-FAVQ" name="PlateauPlusOuMoins" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_H8yxkJljEeeVh8pOL-FAVQ" general="_H8qOsJljEeeVh8pOL-FAVQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9CpMJljEeeVh8pOL-FAVQ" name="nbrEssais" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9FFcJljEeeVh8pOL-FAVQ" name="longueurCode" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9Iv0JljEeeVh8pOL-FAVQ" name="attaquant" visibility="private" type="_H6Qa8JljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9LMEJljEeeVh8pOL-FAVQ" name="defenseur" visibility="private" type="_H6Qa8JljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9OPYJljEeeVh8pOL-FAVQ" name="code" visibility="private" type="_IjrWMJPjEeeFzoTTkxK9Yg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_H9QEkJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot;&quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9R5wJljEeeVh8pOL-FAVQ" name="code2" visibility="private" type="_IjrWMJPjEeeFzoTTkxK9Yg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_H9U9EJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot; &quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9ZOgJljEeeVh8pOL-FAVQ" name="type" visibility="private" type="_IEfVAJljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9fVIJljEeeVh8pOL-FAVQ" name="fenetre" visibility="private" type="_H9df8JljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9jmkJljEeeVh8pOL-FAVQ" name="logger" visibility="private" isLeaf="true" isStatic="true" type="_H8BVgJljEeeVh8pOL-FAVQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_H9ptMJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>LogManager.getLogger()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9sJcJljEeeVh8pOL-FAVQ" name="joueur1Gagne" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_f-GnEPaLEeW5KOK8aDMdgA"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_H9vz0JljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>false</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_H9yQEJljEeeVh8pOL-FAVQ" name="joueur2Gagne" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_f-GnEPaLEeW5KOK8aDMdgA"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_H90sUJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>false</body>
+            </defaultValue>
+          </ownedAttribute>
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_H8_l4JljEeeVh8pOL-FAVQ" name="PlateauPlusOuMoins implements Jeu" client="_H8pAkJljEeeVh8pOL-FAVQ" supplier="_H8104JljEeeVh8pOL-FAVQ" contract="_H8104JljEeeVh8pOL-FAVQ"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_H-Ej8JljEeeVh8pOL-FAVQ" name="PlateauPlusOuMoins" specification="_H916cJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.type = t;&#xD;
+    fenetre = Main.getInstance();&#xD;
+    nbrEssais = Main.getInstance().getOptions().getNbrEssaisPlus();&#xD;
+    longueurCode = Main.getInstance().getOptions().getTailleCodePlus();&#xD;
+    if (t == TypeJeux.CHALLENGER) {&#xD;
+        attaquant = new JoueurHumain(nbrEssais, longueurCode);&#xD;
+        defenseur = new JoueurOrdinateur(nbrEssais, longueurCode);&#xD;
+        fenetre.getContentPane().removeAll();&#xD;
+        fenetre.getContentPane().add(attaquant.getPanel());&#xD;
+        fenetre.getContentPane().repaint();&#xD;
+        fenetre.getContentPane().validate();&#xD;
+        start();&#xD;
+    } else if (t == TypeJeux.DEFENSEUR) {&#xD;
+        attaquant = new JoueurOrdinateur(nbrEssais, longueurCode);&#xD;
+        defenseur = new JoueurHumain(nbrEssais, longueurCode);&#xD;
+        fenetre.getContentPane().removeAll();&#xD;
+        fenetre.getContentPane().repaint();&#xD;
+        fenetre.getContentPane().add(attaquant.getPanel());&#xD;
+        fenetre.getContentPane().validate();&#xD;
+        start();&#xD;
+    } else if (t == TypeJeux.DUEL) {&#xD;
+        attaquant = new JoueurHumain(nbrEssais, longueurCode);&#xD;
+        defenseur = new JoueurOrdinateur(nbrEssais, longueurCode);&#xD;
+        fenetre.getContentPane().removeAll();&#xD;
+        fenetre.getContentPane().repaint();&#xD;
+        fenetre.getContentPane().add(attaquant.getPanel());&#xD;
+        fenetre.getContentPane().add(defenseur.getPanel());&#xD;
+        fenetre.getContentPane().validate();&#xD;
+        start();&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_H-RYQJljEeeVh8pOL-FAVQ" name="run" specification="_H-I1YJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    String result;&#xD;
+    code = defenseur.getNewCode();&#xD;
+    if (fenetre.isDev())&#xD;
+        attaquant.getPanel().setMsgDev(code);&#xD;
+    // attaquant.getPanel().repaint();&#xD;
+    if (type == TypeJeux.DUEL) {&#xD;
+        code2 = attaquant.getNewCode();&#xD;
+        if (fenetre.isDev())&#xD;
+            defenseur.getPanel().setMsgDev(code2);&#xD;
+    }&#xD;
+    int nbrToursJoues = 0;&#xD;
+    String proposition1 = &quot;&quot;;&#xD;
+    String proposition2 = &quot;&quot;;&#xD;
+    logger.info(&quot;Début du jeu&quot;);&#xD;
+    do {&#xD;
+        try {&#xD;
+            if (attaquant.getClass() == JoueurHumain.class) {&#xD;
+                wait();&#xD;
+            } else {&#xD;
+                attaquant.getProposition();&#xD;
+            }&#xD;
+            proposition1 = attaquant.getPanel().getProposition();&#xD;
+            attaquant.getPanel().cleanProposition();&#xD;
+            logger.debug(&quot;tour joué : &quot; + (nbrToursJoues + 1) + &quot;proposition :&quot; + proposition1);&#xD;
+            result = &quot;&quot;;&#xD;
+            for (int i = 0; i &lt; code.length(); i++) {&#xD;
+                int j = code.charAt(i);&#xD;
+                int k = proposition1.charAt(i);&#xD;
+                if (j == k) {&#xD;
+                    result = result + &quot;=&quot;;&#xD;
+                } else if (j > k) {&#xD;
+                    result = result + &quot;+&quot;;&#xD;
+                } else {&#xD;
+                    result = result + &quot;-&quot;;&#xD;
+                }&#xD;
+            }&#xD;
+            attaquant.getPanel().setResult(proposition1, result);&#xD;
+            if (// si c'est un duel, demander une proposition aux deuxieme joueur&#xD;
+            type == TypeJeux.DUEL) {&#xD;
+                defenseur.getProposition();&#xD;
+                proposition2 = defenseur.getPanel().getProposition();&#xD;
+                defenseur.getPanel().cleanProposition();&#xD;
+                logger.debug(&quot;tour joué : &quot; + (nbrToursJoues + 1) + &quot;proposition :&quot; + proposition2);&#xD;
+                result = &quot;&quot;;&#xD;
+                for (int i = 0; i &lt; code2.length(); i++) {&#xD;
+                    int j = code2.charAt(i);&#xD;
+                    int k = proposition2.charAt(i);&#xD;
+                    if (j == k) {&#xD;
+                        result = result + &quot;=&quot;;&#xD;
+                    } else if (j > k) {&#xD;
+                        result = result + &quot;+&quot;;&#xD;
+                    } else {&#xD;
+                        result = result + &quot;-&quot;;&#xD;
+                    }&#xD;
+                }&#xD;
+                defenseur.getPanel().setResult(proposition2, result);&#xD;
+            }&#xD;
+            boolean sortie = false;&#xD;
+            if (code.equals(proposition1)) {&#xD;
+                joueur1Gagne = true;&#xD;
+                sortie = true;&#xD;
+            }&#xD;
+            if (code2.equals(proposition2)) {&#xD;
+                joueur2Gagne = true;&#xD;
+                sortie = true;&#xD;
+            }&#xD;
+            if (sortie)&#xD;
+                break;&#xD;
+        } catch (InterruptedException e) {&#xD;
+            e.printStackTrace();&#xD;
+        }&#xD;
+        nbrToursJoues++;&#xD;
+    } while (nbrToursJoues &lt; nbrEssais);&#xD;
+    String message = &quot;&quot;;&#xD;
+    if (type == TypeJeux.CHALLENGER) {&#xD;
+        if (joueur1Gagne) {&#xD;
+            message = &quot;Vous avez gagné !&quot;;&#xD;
+        } else {&#xD;
+            message = &quot;Vous avez perdu !&quot;;&#xD;
+        }&#xD;
+    } else if (type == TypeJeux.DEFENSEUR) {&#xD;
+        if (joueur1Gagne) {&#xD;
+            message = &quot;L'ordinateur a gagné !&quot;;&#xD;
+        } else {&#xD;
+            message = &quot;L'ordinateur a perdu !&quot;;&#xD;
+        }&#xD;
+    } else if (type == TypeJeux.DUEL) {&#xD;
+        if (joueur1Gagne &amp;&amp; joueur2Gagne) {&#xD;
+            message = &quot;Gagné Ex Aequo!&quot;;&#xD;
+        } else if (joueur1Gagne) {&#xD;
+            message = &quot;Vous avez gagné !&quot;;&#xD;
+        } else {&#xD;
+            message = &quot;Vous avez perdu !&quot;;&#xD;
+        }&#xD;
+    }&#xD;
+    message = message + &quot;\n Voulez-vous recommencer ?&quot;;&#xD;
+    int o = JOptionPane.showConfirmDialog(null, message, &quot;Attention&quot;, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);&#xD;
+    if (o == 0) {&#xD;
+        Main.getInstance().setJeu(new PlateauPlusOuMoins(type));&#xD;
+    } else {&#xD;
+        Main.getInstance().setBackground();&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_H-Xe4JljEeeVh8pOL-FAVQ" name="propositionDisponible" specification="_H-R_UJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    notify();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H916cJljEeeVh8pOL-FAVQ" name="PlateauPlusOuMoins" visibility="public" method="_H-Ej8JljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H-ASgJljEeeVh8pOL-FAVQ" name="t" type="_IEfVAJljEeeVh8pOL-FAVQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H-I1YJljEeeVh8pOL-FAVQ" name="run" visibility="public" method="_H-RYQJljEeeVh8pOL-FAVQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_H-R_UJljEeeVh8pOL-FAVQ" name="propositionDisponible" visibility="public" method="_H-Xe4JljEeeVh8pOL-FAVQ"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_H7wPwJljEeeVh8pOL-FAVQ" name="ihm">
+        <packagedElement xmi:type="uml:Class" xmi:id="_H7xd4JljEeeVh8pOL-FAVQ" name="PlusOuMoinsPanel" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_IHm6cJljEeeVh8pOL-FAVQ" general="_IHipAJljEeeVh8pOL-FAVQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IHqk0JljEeeVh8pOL-FAVQ" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_8heigBydEduyofBvg4RL2w"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_IHtoIJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>1213633100918578601L</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IHzHsJljEeeVh8pOL-FAVQ" name="jtf" visibility="private" type="_IHu2QJljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IH6ccJljEeeVh8pOL-FAVQ" name="okButton" visibility="private" type="_IH2LAJljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IH9fwJljEeeVh8pOL-FAVQ" name="saisie" visibility="private" type="_IHipAJljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IIE0gJljEeeVh8pOL-FAVQ" name="intitule" visibility="private" type="_IIAjEJljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IIHQwJljEeeVh8pOL-FAVQ" name="taille" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IIJtAJljEeeVh8pOL-FAVQ" name="emptyRow" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_IILiMJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>0</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IIRo0JljEeeVh8pOL-FAVQ" name="tab" visibility="private" type="_IINXYJljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_IHoIkJljEeeVh8pOL-FAVQ" name="PlusOuMoinsPanel implements Panel" client="_H7xd4JljEeeVh8pOL-FAVQ" supplier="_IHUmkJljEeeVh8pOL-FAVQ" contract="_IHUmkJljEeeVh8pOL-FAVQ"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IIdPAJljEeeVh8pOL-FAVQ" name="PlusOuMoinsPanel" specification="_IITeAJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.taille = taille;&#xD;
+    saisie = new JPanel();&#xD;
+    saisie.setLayout(new BoxLayout(saisie, BoxLayout.LINE_AXIS));&#xD;
+    saisie.setMaximumSize(new Dimension(275, 25));&#xD;
+    jtf = new JTextField();&#xD;
+    jtf.setDocument(new JTextFieldLimited(0, longueurCode));&#xD;
+    jtf.addKeyListener(new entreeListener(jtf));&#xD;
+    okButton = new JButton(&quot;OK&quot;);&#xD;
+    okButton.setMaximumSize(new Dimension(40, 20));&#xD;
+    okButton.addActionListener(new PlusPanelOkButtonListener(jtf));&#xD;
+    if (humain) {&#xD;
+        intitule = new JLabel(&quot;Votre proposition : &quot;);&#xD;
+    } else {&#xD;
+        intitule = new JLabel(&quot;Proposition Ordinateur : &quot;);&#xD;
+        jtf.setEditable(false);&#xD;
+        okButton.setVisible(false);&#xD;
+    }&#xD;
+    saisie.add(intitule);&#xD;
+    saisie.add(Box.createRigidArea(new Dimension(10, 0)));&#xD;
+    saisie.add(jtf);&#xD;
+    saisie.add(Box.createRigidArea(new Dimension(10, 0)));&#xD;
+    saisie.add(okButton);&#xD;
+    String title[] = { &quot;Proposition&quot;, &quot;Résultat&quot; };&#xD;
+    Object[][] tableau = new Object[this.taille][2];&#xD;
+    tab = new JTable(tableau, title);&#xD;
+    tab.setEnabled(false);&#xD;
+    this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));&#xD;
+    this.add(Box.createRigidArea(new Dimension(0, 15)));&#xD;
+    this.add(saisie, BorderLayout.NORTH);&#xD;
+    this.add(Box.createRigidArea(new Dimension(0, 15)));&#xD;
+    JScrollPane jsp = new JScrollPane(tab);&#xD;
+    jsp.setMaximumSize(new Dimension(275, 550));&#xD;
+    this.add(jsp, BorderLayout.SOUTH);&#xD;
+    this.setPreferredSize(new Dimension(275, 700));&#xD;
+    this.setVisible(true);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IInAAJljEeeVh8pOL-FAVQ" name="setResult" specification="_IIhgcJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    tab.setValueAt(code, emptyRow, 0);&#xD;
+    tab.setValueAt(result, emptyRow, 1);&#xD;
+    this.emptyRow++;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IIsfkJljEeeVh8pOL-FAVQ" name="getProposition" specification="_IIpcQJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    String s = jtf.getText();&#xD;
+    return s;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IIwJ8JljEeeVh8pOL-FAVQ" name="cleanProposition" specification="_IIu70JljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    jtf.setText(&quot;&quot;);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_II2QkJljEeeVh8pOL-FAVQ" name="setProposition" specification="_IIzNQJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    jtf.setText(string);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_II_agJljEeeVh8pOL-FAVQ" name="getLastResult" specification="_II5T4JljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    if (emptyRow > 0) {&#xD;
+        return (String) tab.getValueAt((emptyRow - 1), 1);&#xD;
+    } else {&#xD;
+        return &quot;&quot;;&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IJGIMJljEeeVh8pOL-FAVQ" name="setMsgDev" specification="_IJCd0JljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    intitule.setText(&quot;Code:&quot; + msg);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IITeAJljEeeVh8pOL-FAVQ" name="PlusOuMoinsPanel" visibility="public" method="_IIdPAJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IIYWgJljEeeVh8pOL-FAVQ" name="taille">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IIaLsJljEeeVh8pOL-FAVQ" name="longueurCode">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IIcA4JljEeeVh8pOL-FAVQ" name="humain">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_f-GnEPaLEeW5KOK8aDMdgA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IIhgcJljEeeVh8pOL-FAVQ" name="setResult" visibility="public" method="_IInAAJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IIjVoJljEeeVh8pOL-FAVQ" name="code" type="_IjrWMJPjEeeFzoTTkxK9Yg"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IIlK0JljEeeVh8pOL-FAVQ" name="result" type="_IjrWMJPjEeeFzoTTkxK9Yg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IIpcQJljEeeVh8pOL-FAVQ" name="getProposition" visibility="public" method="_IIsfkJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IIrRcJljEeeVh8pOL-FAVQ" type="_IjrWMJPjEeeFzoTTkxK9Yg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IIu70JljEeeVh8pOL-FAVQ" name="cleanProposition" visibility="public" method="_IIwJ8JljEeeVh8pOL-FAVQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IIzNQJljEeeVh8pOL-FAVQ" name="setProposition" visibility="public" method="_II2QkJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_II1CcJljEeeVh8pOL-FAVQ" name="string" type="_IjrWMJPjEeeFzoTTkxK9Yg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_II5T4JljEeeVh8pOL-FAVQ" name="getLastResult" visibility="public" method="_II_agJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_II8-QJljEeeVh8pOL-FAVQ" type="_IjrWMJPjEeeFzoTTkxK9Yg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IJCd0JljEeeVh8pOL-FAVQ" name="setMsgDev" visibility="public" method="_IJGIMJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IJETAJljEeeVh8pOL-FAVQ" name="msg" type="_IjrWMJPjEeeFzoTTkxK9Yg"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_H9df8JljEeeVh8pOL-FAVQ" name="Main" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_ILNBAJljEeeVh8pOL-FAVQ" general="_IiQZ4JPjEeeFzoTTkxK9Yg"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_ILOPIJljEeeVh8pOL-FAVQ" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_8heigBydEduyofBvg4RL2w"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_ILO2MJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>-2999965498510953416L</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_ILQrYJljEeeVh8pOL-FAVQ" name="jeu" visibility="private" type="_H8104JljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_ILTHoJljEeeVh8pOL-FAVQ" name="options" visibility="private" type="_IFMfoJljEeeVh8pOL-FAVQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_ILTusJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new Options()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_ILVj4JljEeeVh8pOL-FAVQ" name="INSTANCE" visibility="private" isStatic="true" type="_H9df8JljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_ILZOQJljEeeVh8pOL-FAVQ" name="logger" visibility="private" isLeaf="true" isStatic="true" type="_H8BVgJljEeeVh8pOL-FAVQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_ILbqgJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>LogManager.getLogger()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ILhxIJljEeeVh8pOL-FAVQ" name="Main" specification="_ILdfsJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
     this.setTitle(&quot;Mettez votre logique à l'épreuve !&quot;);&#xD;
     this.setSize(600, 600);&#xD;
     this.setLocationRelativeTo(null);&#xD;
@@ -32,13 +564,12 @@
     panneau.add(image);&#xD;
     this.setContentPane(panneau);&#xD;
     this.setVisible(true);&#xD;
-// p.setResult(1235, &quot;++-=&quot;);&#xD;
-// p.setResult(4587, &quot;----&quot;);&#xD;
 </body>
-              </ownedBehavior>
-              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IjizUJPjEeeFzoTTkxK9Yg" name="initialiseMenu" specification="_Ija3gJPjEeeFzoTTkxK9Yg">
-                <language>JAVA</language>
-                <body>&#xD;
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ILmpoJljEeeVh8pOL-FAVQ" name="initialiseMenu" specification="_ILk0cJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    logger.trace(&quot;initialisation interface graphique principale&quot;);&#xD;
     JMenuBar menuBar = new JMenuBar();&#xD;
     JMenu jeuxMenu = new JMenu(&quot;Jeux&quot;);&#xD;
     JMenu optionsMenu = new JMenu(&quot;Options&quot;);&#xD;
@@ -46,7 +577,7 @@
     JMenu plusOuMoins = new JMenu(&quot;Plus ou Moins&quot;);&#xD;
     JMenu masterMind = new JMenu(&quot;Mastermind&quot;);&#xD;
     JMenuItem challengerPlus = new JMenuItem(&quot;Challenger&quot;);&#xD;
-    challengerPlus.addActionListener(new ChallengerPlusListener(this));&#xD;
+    challengerPlus.addActionListener(new ChallengerPlusListener());&#xD;
     JMenuItem defenseurPlus = new JMenuItem(&quot;Defenseur&quot;);&#xD;
     defenseurPlus.addActionListener(new DefenseurPlusListener());&#xD;
     JMenuItem duelPlus = new JMenuItem(&quot;Duel&quot;);&#xD;
@@ -60,7 +591,7 @@
     JMenuItem aide = new JMenuItem(&quot;?&quot;);&#xD;
     aide.addActionListener(new AideListener());&#xD;
     JMenuItem options = new JMenuItem(&quot;Options&quot;);&#xD;
-    options.addActionListener(new OptionsListener());&#xD;
+    options.addActionListener(new OptionsListener(this));&#xD;
     JMenuItem quitter = new JMenuItem(&quot;Quitter&quot;);&#xD;
     quitter.addActionListener(new ActionListener() {&#xD;
 &#xD;
@@ -86,49 +617,118 @@
     menuBar.add(aideMenu);&#xD;
     this.setJMenuBar(menuBar);&#xD;
 </body>
-              </ownedBehavior>
-              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IkAtYJPjEeeFzoTTkxK9Yg" name="main" specification="_Ij1uQJPjEeeFzoTTkxK9Yg">
-                <language>JAVA</language>
-                <body>&#xD;
-    Main f = new Main();&#xD;
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ILxowJljEeeVh8pOL-FAVQ" name="main" specification="_ILqUAJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    logger.info(&quot;lancement programme&quot;);&#xD;
+    INSTANCE = new Main();&#xD;
+    for (int i = 0; i &lt; args.length; i++) {&#xD;
+        if (// si argument ligne de commande = dev&#xD;
+        args[i].equals(&quot;dev&quot;)) {&#xD;
+            INSTANCE.getOptions().setDev(true);&#xD;
+            INSTANCE.getOptions().sauvegardeConfig();&#xD;
+        }&#xD;
+    }&#xD;
 </body>
-              </ownedBehavior>
-              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IkWEkJPjEeeFzoTTkxK9Yg" name="setJeu" specification="_IkNhsJPjEeeFzoTTkxK9Yg">
-                <language>JAVA</language>
-                <body>&#xD;
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IL3IUJljEeeVh8pOL-FAVQ" name="setJeu" specification="_IL0FAJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
     this.jeu = plateauPlusOuMoins;&#xD;
 </body>
-              </ownedBehavior>
-              <ownedOperation xmi:type="uml:Operation" xmi:id="_IjAn0JPjEeeFzoTTkxK9Yg" name="Main" visibility="public" method="_IjWmEJPjEeeFzoTTkxK9Yg"/>
-              <ownedOperation xmi:type="uml:Operation" xmi:id="_Ija3gJPjEeeFzoTTkxK9Yg" name="initialiseMenu" visibility="private" method="_IjizUJPjEeeFzoTTkxK9Yg"/>
-              <ownedOperation xmi:type="uml:Operation" xmi:id="_Ij1uQJPjEeeFzoTTkxK9Yg" name="main" visibility="public" isStatic="true" method="_IkAtYJPjEeeFzoTTkxK9Yg">
-                <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ij6mwJPjEeeFzoTTkxK9Yg" name="args" type="_IjrWMJPjEeeFzoTTkxK9Yg">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ij9DAJPjEeeFzoTTkxK9Yg"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ij-4MJPjEeeFzoTTkxK9Yg" value="*"/>
-                </ownedParameter>
-              </ownedOperation>
-              <ownedOperation xmi:type="uml:Operation" xmi:id="_IkNhsJPjEeeFzoTTkxK9Yg" name="setJeu" visibility="public" method="_IkWEkJPjEeeFzoTTkxK9Yg">
-                <ownedParameter xmi:type="uml:Parameter" xmi:id="_IkSaMJPjEeeFzoTTkxK9Yg" name="plateauPlusOuMoins" type="_IkFl4JPjEeeFzoTTkxK9Yg"/>
-              </ownedOperation>
-            </packagedElement>
-            <packagedElement xmi:type="uml:Class" xmi:id="_RzxokJPjEeeFzoTTkxK9Yg" name="OptionsDialogBox" visibility="public">
-              <generalization xmi:type="uml:Generalization" xmi:id="_Rz2hEJPjEeeFzoTTkxK9Yg" general="_Rzy2sJPjEeeFzoTTkxK9Yg"/>
-              <ownedAttribute xmi:type="uml:Property" xmi:id="_Rz3vMJPjEeeFzoTTkxK9Yg" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isUnique="false">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_8heigBydEduyofBvg4RL2w"/>
-                <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_Rz49UJPjEeeFzoTTkxK9Yg" name="defaultValue">
-                  <language>JAVA</language>
-                  <body>8901635042644317428L</body>
-                </defaultValue>
-              </ownedAttribute>
-              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0ASEJPjEeeFzoTTkxK9Yg" name="nombreEssaisPOM" visibility="private" type="_Rz6LcJPjEeeFzoTTkxK9Yg" isUnique="false"/>
-              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0ASEZPjEeeFzoTTkxK9Yg" name="tailleCodePOM" visibility="private" type="_Rz6LcJPjEeeFzoTTkxK9Yg" isUnique="false"/>
-              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0A5IJPjEeeFzoTTkxK9Yg" name="nombreEssaisMaster" visibility="private" type="_Rz6LcJPjEeeFzoTTkxK9Yg" isUnique="false"/>
-              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0A5IZPjEeeFzoTTkxK9Yg" name="tailleCodeMaster" visibility="private" type="_Rz6LcJPjEeeFzoTTkxK9Yg" isUnique="false"/>
-              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0G_wJPjEeeFzoTTkxK9Yg" name="nbrCouleursMaster" visibility="private" type="_R0BgMJPjEeeFzoTTkxK9Yg" isUnique="false"/>
-              <ownedAttribute xmi:type="uml:Property" xmi:id="_R0KqIJPjEeeFzoTTkxK9Yg" name="devMod" visibility="private" type="_R0Hm0JPjEeeFzoTTkxK9Yg" isUnique="false"/>
-              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_R0T0EJPjEeeFzoTTkxK9Yg" name="OptionsDialogBox" specification="_R0L4QJPjEeeFzoTTkxK9Yg">
-                <language>JAVA</language>
-                <body>&#xD;
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IL9O8JljEeeVh8pOL-FAVQ" name="getJeu" specification="_IL6LoJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return jeu;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IMBgYJljEeeVh8pOL-FAVQ" name="setOptions" specification="_IL-dEJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.options = o;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IMFx0JljEeeVh8pOL-FAVQ" name="getOptions" specification="_IMDVkJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return options;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IMLRYJljEeeVh8pOL-FAVQ" name="getInstance" specification="_IMI1IJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return INSTANCE;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IMO7wJljEeeVh8pOL-FAVQ" name="setBackground" specification="_IMNtoJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    ImageIcon icone = new ImageIcon(&quot;src/main/ressources/mastermind.png&quot;);&#xD;
+    JLabel image = new JLabel(icone);&#xD;
+    this.add(image);&#xD;
+    JPanel panneau = new JPanel();&#xD;
+    panneau.add(image);&#xD;
+    this.setContentPane(panneau);&#xD;
+    this.validate();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IMTNMJljEeeVh8pOL-FAVQ" name="isDev" specification="_IMRYAJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return options.getDev();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ILdfsJljEeeVh8pOL-FAVQ" name="Main" visibility="public" method="_ILhxIJljEeeVh8pOL-FAVQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ILk0cJljEeeVh8pOL-FAVQ" name="initialiseMenu" visibility="private" method="_ILmpoJljEeeVh8pOL-FAVQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ILqUAJljEeeVh8pOL-FAVQ" name="main" visibility="public" isStatic="true" method="_ILxowJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ILtXUJljEeeVh8pOL-FAVQ" name="args" type="_IjrWMJPjEeeFzoTTkxK9Yg">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ILulcJljEeeVh8pOL-FAVQ"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ILvzkJljEeeVh8pOL-FAVQ" value="*"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IL0FAJljEeeVh8pOL-FAVQ" name="setJeu" visibility="public" method="_IL3IUJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IL1TIJljEeeVh8pOL-FAVQ" name="plateauPlusOuMoins" type="_H8pAkJljEeeVh8pOL-FAVQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IL6LoJljEeeVh8pOL-FAVQ" name="getJeu" visibility="public" method="_IL9O8JljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IL8A0JljEeeVh8pOL-FAVQ" type="_H8104JljEeeVh8pOL-FAVQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IL-dEJljEeeVh8pOL-FAVQ" name="setOptions" visibility="public" method="_IMBgYJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IMASQJljEeeVh8pOL-FAVQ" name="o" type="_IFMfoJljEeeVh8pOL-FAVQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IMDVkJljEeeVh8pOL-FAVQ" name="getOptions" visibility="public" method="_IMFx0JljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IMEjsJljEeeVh8pOL-FAVQ" type="_IFMfoJljEeeVh8pOL-FAVQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IMI1IJljEeeVh8pOL-FAVQ" name="getInstance" visibility="public" isStatic="true" method="_IMLRYJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IMKDQJljEeeVh8pOL-FAVQ" type="_H9df8JljEeeVh8pOL-FAVQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IMNtoJljEeeVh8pOL-FAVQ" name="setBackground" visibility="public" method="_IMO7wJljEeeVh8pOL-FAVQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IMRYAJljEeeVh8pOL-FAVQ" name="isDev" visibility="public" method="_IMTNMJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IMR_EJljEeeVh8pOL-FAVQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_IKP-wJljEeeVh8pOL-FAVQ" name="OptionsDialogBox" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_IKTCEJljEeeVh8pOL-FAVQ" general="_Rzy2sJPjEeeFzoTTkxK9Yg"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IKU3QJljEeeVh8pOL-FAVQ" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_8heigBydEduyofBvg4RL2w"/>
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_IKX6kJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>8901635042644317428L</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IKaW0JljEeeVh8pOL-FAVQ" name="nombreEssaisPOM" visibility="private" type="_IHu2QJljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IKdaIJljEeeVh8pOL-FAVQ" name="tailleCodePOM" visibility="private" type="_IHu2QJljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IKf2YJljEeeVh8pOL-FAVQ" name="nombreEssaisMaster" visibility="private" type="_IHu2QJljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IKi5sJljEeeVh8pOL-FAVQ" name="tailleCodeMaster" visibility="private" type="_IHu2QJljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IKlV8JljEeeVh8pOL-FAVQ" name="nbrCouleursMaster" visibility="private" type="_R0BgMJPjEeeFzoTTkxK9Yg" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IKoZQJljEeeVh8pOL-FAVQ" name="devMod" visibility="private" type="_R0Hm0JPjEeeFzoTTkxK9Yg" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IKrckJljEeeVh8pOL-FAVQ" name="parent" visibility="private" type="_H9df8JljEeeVh8pOL-FAVQ" isUnique="false"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IK4Q4JljEeeVh8pOL-FAVQ" name="OptionsDialogBox" specification="_IKuf4JljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
     super(parent, title, modal);&#xD;
     this.setSize(550, 270);&#xD;
     this.setLocationRelativeTo(null);&#xD;
@@ -137,67 +737,410 @@
     this.initComponent();&#xD;
     this.setVisible(true);&#xD;
 </body>
-              </ownedBehavior>
-              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_R0VpQJPjEeeFzoTTkxK9Yg" name="initComponent" specification="_R0UbIJPjEeeFzoTTkxK9Yg">
-                <language>JAVA</language>
-                <body>&#xD;
-    // POM&#xD;
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IK9JYJljEeeVh8pOL-FAVQ" name="initComponent" specification="_IK6tIJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    // panel POM&#xD;
     JPanel panPOM = new JPanel();&#xD;
     panPOM.setBackground(Color.white);&#xD;
     panPOM.setPreferredSize(new Dimension(200, 60));&#xD;
-    nombreEssaisPOM = new JFormattedTextField();&#xD;
-    nombreEssaisPOM.setPreferredSize(new Dimension(25, 25));&#xD;
-    tailleCodePOM = new JFormattedTextField();&#xD;
-    tailleCodePOM.setPreferredSize(new Dimension(25, 25));&#xD;
     panPOM.setBorder(BorderFactory.createTitledBorder(&quot;Plus ou Moins&quot;));&#xD;
+    nombreEssaisPOM = new JTextField();&#xD;
+    nombreEssaisPOM.setDocument(new JTextFieldLimited(20));&#xD;
+    nombreEssaisPOM.setText(String.valueOf(Main.getInstance().getOptions().getNbrEssaisPlus()));&#xD;
+    nombreEssaisPOM.setPreferredSize(new Dimension(25, 25));&#xD;
+    tailleCodePOM = new JTextField();&#xD;
+    tailleCodePOM.setDocument(new JTextFieldLimited(20));&#xD;
+    tailleCodePOM.setText(String.valueOf(Main.getInstance().getOptions().getTailleCodePlus()));&#xD;
+    tailleCodePOM.setPreferredSize(new Dimension(25, 25));&#xD;
     panPOM.add(new JLabel(&quot;Nombre d'essais&quot;));&#xD;
     panPOM.add(nombreEssaisPOM);&#xD;
     panPOM.add(new JLabel(&quot;Longueur du Code&quot;));&#xD;
     panPOM.add(tailleCodePOM);&#xD;
+    // panel Master&#xD;
     JPanel panMaster = new JPanel();&#xD;
     panMaster.setBackground(Color.white);&#xD;
     panMaster.setPreferredSize(new Dimension(220, 60));&#xD;
     panMaster.setBorder(BorderFactory.createTitledBorder(&quot;Mastermind&quot;));&#xD;
-    nombreEssaisMaster = new JFormattedTextField();&#xD;
+    nombreEssaisMaster = new JTextField();&#xD;
+    nombreEssaisMaster.setDocument(new JTextFieldLimited(20));&#xD;
+    nombreEssaisMaster.setText(String.valueOf(Main.getInstance().getOptions().getNbrEssaisMaster()));&#xD;
     nombreEssaisMaster.setPreferredSize(new Dimension(25, 25));&#xD;
-    tailleCodeMaster = new JFormattedTextField();&#xD;
+    tailleCodeMaster = new JTextField();&#xD;
+    tailleCodeMaster.setDocument(new JTextFieldLimited(20));&#xD;
+    tailleCodeMaster.setText(String.valueOf(Main.getInstance().getOptions().getTailleCodeMaster()));&#xD;
     tailleCodeMaster.setPreferredSize(new Dimension(25, 25));&#xD;
     Integer[] tab = { 4, 5, 6, 7, 8, 9, 10 };&#xD;
     nbrCouleursMaster = new JComboBox&lt;Integer>(tab);&#xD;
+    nbrCouleursMaster.setSelectedItem(Main.getInstance().getOptions().getNbrCouleursMaster());&#xD;
     panMaster.add(new JLabel(&quot;Nombre d'essais&quot;));&#xD;
     panMaster.add(nombreEssaisMaster);&#xD;
     panMaster.add(new JLabel(&quot;Longueur du Code&quot;));&#xD;
     panMaster.add(tailleCodeMaster);&#xD;
     panMaster.add(new JLabel(&quot;Nombres de couleurs&quot;));&#xD;
     panMaster.add(nbrCouleursMaster);&#xD;
+    // panel mode dev&#xD;
     JPanel panMode = new JPanel();&#xD;
     panMode.setBackground(Color.white);&#xD;
     panMode.setPreferredSize(new Dimension(220, 60));&#xD;
     panMode.setBorder(BorderFactory.createTitledBorder(&quot;Mode Dev&quot;));&#xD;
     panMode.add(new JLabel(&quot;Mode developpeur&quot;));&#xD;
     devMod = new JCheckBox();&#xD;
+    devMod.setSelected(Main.getInstance().getOptions().getDev());&#xD;
     panMode.add(devMod);&#xD;
+    // panel boutons&#xD;
     JPanel panBoutons = new JPanel();&#xD;
     panBoutons.setBackground(Color.white);&#xD;
-    panBoutons.add(new JButton(&quot;OK&quot;));&#xD;
-    panBoutons.add(new JButton(&quot;Annuler&quot;));&#xD;
+    JButton okButton = new JButton(&quot;OK&quot;);&#xD;
+    okButton.addActionListener(new OptionsOkListener(parent, this));&#xD;
+    JButton cancelButton = new JButton(&quot;Annuler&quot;);&#xD;
+    cancelButton.addActionListener(new OptionsCancelListener(this));&#xD;
+    panBoutons.add(okButton);&#xD;
+    panBoutons.add(cancelButton);&#xD;
     this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));&#xD;
     this.getContentPane().add(panPOM);&#xD;
     this.getContentPane().add(panMaster);&#xD;
     this.getContentPane().add(panMode);&#xD;
     this.getContentPane().add(panBoutons);&#xD;
 </body>
-              </ownedBehavior>
-              <ownedOperation xmi:type="uml:Operation" xmi:id="_R0L4QJPjEeeFzoTTkxK9Yg" name="OptionsDialogBox" visibility="public" method="_R0T0EJPjEeeFzoTTkxK9Yg">
-                <ownedParameter xmi:type="uml:Parameter" xmi:id="_R0R-4JPjEeeFzoTTkxK9Yg" name="parent" type="_IiQZ4JPjEeeFzoTTkxK9Yg"/>
-                <ownedParameter xmi:type="uml:Parameter" xmi:id="_R0TNAJPjEeeFzoTTkxK9Yg" name="title" type="_IjrWMJPjEeeFzoTTkxK9Yg"/>
-                <ownedParameter xmi:type="uml:Parameter" xmi:id="_R0TNAZPjEeeFzoTTkxK9Yg" name="modal">
-                  <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
-                </ownedParameter>
-              </ownedOperation>
-              <ownedOperation xmi:type="uml:Operation" xmi:id="_R0UbIJPjEeeFzoTTkxK9Yg" name="initComponent" visibility="private" method="_R0VpQJPjEeeFzoTTkxK9Yg"/>
-            </packagedElement>
-          </packagedElement>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ILDQAJljEeeVh8pOL-FAVQ" name="getOptions" specification="_ILAMsJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    int a = Integer.parseInt(nombreEssaisPOM.getText());&#xD;
+    int b = Integer.parseInt(nombreEssaisMaster.getText());&#xD;
+    int c = Integer.parseInt(tailleCodePOM.getText());&#xD;
+    int d = Integer.parseInt(tailleCodeMaster.getText());&#xD;
+    int e = (int) nbrCouleursMaster.getSelectedItem();&#xD;
+    boolean f = devMod.isSelected();&#xD;
+    Options o = new Options(a, b, c, d, e, f);&#xD;
+    if (a > 0 &amp;&amp; b > 0 &amp;&amp; c > 0 &amp;&amp; d > 0) {&#xD;
+        return o;&#xD;
+    } else {&#xD;
+        return null;&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IKuf4JljEeeVh8pOL-FAVQ" name="OptionsDialogBox" visibility="public" method="_IK4Q4JljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IKzYYJljEeeVh8pOL-FAVQ" name="parent" type="_H9df8JljEeeVh8pOL-FAVQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IK10oJljEeeVh8pOL-FAVQ" name="title" type="_IjrWMJPjEeeFzoTTkxK9Yg"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IK3CwJljEeeVh8pOL-FAVQ" name="modal">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IK6tIJljEeeVh8pOL-FAVQ" name="initComponent" visibility="private" method="_IK9JYJljEeeVh8pOL-FAVQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ILAMsJljEeeVh8pOL-FAVQ" name="getOptions" visibility="public" method="_ILDQAJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ILBa0JljEeeVh8pOL-FAVQ" type="_IFMfoJljEeeVh8pOL-FAVQ" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_IMWQgJljEeeVh8pOL-FAVQ" name="listener"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_H8z_sJljEeeVh8pOL-FAVQ" name="common">
+        <packagedElement xmi:type="uml:Interface" xmi:id="_H8104JljEeeVh8pOL-FAVQ" name="Jeu" visibility="public">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IFDVsJljEeeVh8pOL-FAVQ" name="run" visibility="public"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IFFx8JljEeeVh8pOL-FAVQ" name="propositionDisponible" visibility="public"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Enumeration" xmi:id="_IEfVAJljEeeVh8pOL-FAVQ" name="TypeJeux" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IEulkJljEeeVh8pOL-FAVQ" name="type" visibility="private" type="_IjrWMJPjEeeFzoTTkxK9Yg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_IEy3AJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot;&quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IE1TQJljEeeVh8pOL-FAVQ" name="TypeJeux" visibility="private">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IE7Z4JljEeeVh8pOL-FAVQ" name="type" type="_IjrWMJPjEeeFzoTTkxK9Yg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IE9PEJljEeeVh8pOL-FAVQ" name="toString" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IE_rUJljEeeVh8pOL-FAVQ" type="_IjrWMJPjEeeFzoTTkxK9Yg" direction="return"/>
+          </ownedOperation>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_IEiYUJljEeeVh8pOL-FAVQ" name="CHALLENGER">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_IEkNgJljEeeVh8pOL-FAVQ" name="specification">
+              <language>JAVA</language>
+              <body>&quot;Challenger&quot;</body>
+            </specification>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_IEmpwJljEeeVh8pOL-FAVQ" name="DEFENSEUR">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_IEn34JljEeeVh8pOL-FAVQ" name="specification">
+              <language>JAVA</language>
+              <body>&quot;Defenseur&quot;</body>
+            </specification>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_IEqUIJljEeeVh8pOL-FAVQ" name="DUEL">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_IEsJUJljEeeVh8pOL-FAVQ" name="specification">
+              <language>JAVA</language>
+              <body>&quot;Duel&quot;</body>
+            </specification>
+          </ownedLiteral>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_IFMfoJljEeeVh8pOL-FAVQ" name="Options" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IFPi8JljEeeVh8pOL-FAVQ" name="nbrEssaisPlus" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IFTNUJljEeeVh8pOL-FAVQ" name="nbrEssaisMaster" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IFVpkJljEeeVh8pOL-FAVQ" name="tailleCodePlus" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IFYs4JljEeeVh8pOL-FAVQ" name="tailleCodeMaster" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IFc-UJljEeeVh8pOL-FAVQ" name="nbrCouleursMaster" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IFgBoJljEeeVh8pOL-FAVQ" name="dev" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_f-GnEPaLEeW5KOK8aDMdgA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_IFjE8JljEeeVh8pOL-FAVQ" name="logger" visibility="private" isLeaf="true" isStatic="true" type="_H8BVgJljEeeVh8pOL-FAVQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_IFmvUJljEeeVh8pOL-FAVQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>LogManager.getLogger()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IFtdAJljEeeVh8pOL-FAVQ" name="Options" specification="_IFpLkJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    lectureConfig();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IGA_AJljEeeVh8pOL-FAVQ" name="Options" specification="_IFxucJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.nbrEssaisPlus = nbrEssaisPlus;&#xD;
+    this.nbrEssaisMaster = nbrEssaisMaster;&#xD;
+    this.tailleCodePlus = tailleCodePlus;&#xD;
+    this.tailleCodeMaster = tailleCodeMaster;&#xD;
+    this.nbrCouleursMaster = nbrCouleursMaster;&#xD;
+    this.dev = dev;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IGLXEJljEeeVh8pOL-FAVQ" name="setDev" specification="_IGFQcJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.dev = b;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IGTS4JljEeeVh8pOL-FAVQ" name="setNbrEssaisPlus" specification="_IGPBcJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.nbrEssaisPlus = i;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IGZZgJljEeeVh8pOL-FAVQ" name="setNbrEssaisMaster" specification="_IGWWMJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.nbrEssaisMaster = i;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IGdq8JljEeeVh8pOL-FAVQ" name="setTailleCodePlus" specification="_IGanoJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.tailleCodePlus = i;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IGjxkJljEeeVh8pOL-FAVQ" name="setTailleCodeMaster" specification="_IGguQJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.tailleCodeMaster = i;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IGp4MJljEeeVh8pOL-FAVQ" name="setNbrCouleursMaster" specification="_IGm04JljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    this.nbrCouleursMaster = i;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IGv-0JljEeeVh8pOL-FAVQ" name="getDev" specification="_IGsUcJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.dev;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IG03UJljEeeVh8pOL-FAVQ" name="getNbrEssaisPlus" specification="_IGybEJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbrEssaisPlus;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IG5IwJljEeeVh8pOL-FAVQ" name="getNbrEssaisMaster" specification="_IG2FcJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbrEssaisMaster;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IG-BQJljEeeVh8pOL-FAVQ" name="getTailleCodePlus" specification="_IG698JljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.tailleCodePlus;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IHCSsJljEeeVh8pOL-FAVQ" name="getTailleCodeMaster" specification="_IHAdgJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.tailleCodeMaster;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IHHyQJljEeeVh8pOL-FAVQ" name="getNbrCouleursMaster" specification="_IHEu8JljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return this.nbrCouleursMaster;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IHMqwJljEeeVh8pOL-FAVQ" name="sauvegardeConfig" specification="_IHK1kJljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    Properties prop = new Properties();&#xD;
+    OutputStream output = null;&#xD;
+    try {&#xD;
+        output = new FileOutputStream(&quot;src/main/ressources/config.properties&quot;);&#xD;
+        prop.setProperty(&quot;nbrEssaisPlus&quot;, nbrEssaisPlus.toString());&#xD;
+        prop.setProperty(&quot;tailleCodePlus&quot;, tailleCodePlus.toString());&#xD;
+        prop.setProperty(&quot;nbrEssaisMaster&quot;, nbrEssaisMaster.toString());&#xD;
+        prop.setProperty(&quot;tailleCodeMaster&quot;, tailleCodeMaster.toString());&#xD;
+        prop.setProperty(&quot;nbrCouleursMaster&quot;, nbrCouleursMaster.toString());&#xD;
+        prop.setProperty(&quot;dev&quot;, dev.toString());&#xD;
+        prop.store(output, null);&#xD;
+    } catch (IOException io) {&#xD;
+        io.printStackTrace();&#xD;
+    } finally {&#xD;
+        if (output != null) {&#xD;
+            try {&#xD;
+                output.close();&#xD;
+            } catch (IOException e) {&#xD;
+                e.printStackTrace();&#xD;
+            }&#xD;
+        }&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_IHQVIJljEeeVh8pOL-FAVQ" name="lectureConfig" specification="_IHOf8JljEeeVh8pOL-FAVQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    Properties prop = new Properties();&#xD;
+    InputStream input = null;&#xD;
+    try {&#xD;
+        input = new FileInputStream(&quot;src/main/ressources/config.properties&quot;);&#xD;
+        prop.load(input);&#xD;
+        nbrEssaisPlus = Integer.parseInt(prop.getProperty(&quot;nbrEssaisPlus&quot;));&#xD;
+        nbrEssaisMaster = Integer.parseInt(prop.getProperty(&quot;nbrEssaisMaster&quot;));&#xD;
+        tailleCodePlus = Integer.parseInt(prop.getProperty(&quot;tailleCodePlus&quot;));&#xD;
+        tailleCodeMaster = Integer.parseInt(prop.getProperty(&quot;tailleCodeMaster&quot;));&#xD;
+        nbrCouleursMaster = Integer.parseInt(prop.getProperty(&quot;nbrCouleursMaster&quot;));&#xD;
+        dev = Boolean.parseBoolean(prop.getProperty(&quot;dev&quot;));&#xD;
+        logger.debug(&quot;lecture du fichier config.properties&quot;);&#xD;
+    } catch (IOException ex) {&#xD;
+    } finally {&#xD;
+        if (input != null) {&#xD;
+            try {&#xD;
+                input.close();&#xD;
+            } catch (IOException e) {&#xD;
+                e.printStackTrace();&#xD;
+            }&#xD;
+        } else {&#xD;
+            nbrEssaisPlus = 10;&#xD;
+            nbrEssaisMaster = 10;&#xD;
+            tailleCodePlus = 4;&#xD;
+            tailleCodeMaster = 4;&#xD;
+            nbrCouleursMaster = 6;&#xD;
+            dev = false;&#xD;
+            sauvegardeConfig();&#xD;
+            logger.debug(&quot;lecture du fichier config.properties impossible. Utilisation des valeurs par défaut.&quot;);&#xD;
+        }&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IFpLkJljEeeVh8pOL-FAVQ" name="Options" visibility="public" method="_IFtdAJljEeeVh8pOL-FAVQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IFxucJljEeeVh8pOL-FAVQ" name="Options" visibility="public" method="_IGA_AJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IF3OAJljEeeVh8pOL-FAVQ" name="nbrEssaisPlus">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IF4cIJljEeeVh8pOL-FAVQ" name="nbrEssaisMaster">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IF6RUJljEeeVh8pOL-FAVQ" name="tailleCodePlus">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IF8GgJljEeeVh8pOL-FAVQ" name="tailleCodeMaster">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IF97sJljEeeVh8pOL-FAVQ" name="nbrCouleursMaster">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IF_w4JljEeeVh8pOL-FAVQ" name="dev">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_f-GnEPaLEeW5KOK8aDMdgA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IGFQcJljEeeVh8pOL-FAVQ" name="setDev" visibility="public" method="_IGLXEJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IGI60JljEeeVh8pOL-FAVQ" name="b">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IGPBcJljEeeVh8pOL-FAVQ" name="setNbrEssaisPlus" visibility="public" method="_IGTS4JljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IGQ2oJljEeeVh8pOL-FAVQ" name="i">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IGWWMJljEeeVh8pOL-FAVQ" name="setNbrEssaisMaster" visibility="public" method="_IGZZgJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IGXkUJljEeeVh8pOL-FAVQ" name="i">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IGanoJljEeeVh8pOL-FAVQ" name="setTailleCodePlus" visibility="public" method="_IGdq8JljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IGcc0JljEeeVh8pOL-FAVQ" name="i">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IGguQJljEeeVh8pOL-FAVQ" name="setTailleCodeMaster" visibility="public" method="_IGjxkJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IGijcJljEeeVh8pOL-FAVQ" name="i">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IGm04JljEeeVh8pOL-FAVQ" name="setNbrCouleursMaster" visibility="public" method="_IGp4MJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IGoDAJljEeeVh8pOL-FAVQ" name="i">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IGsUcJljEeeVh8pOL-FAVQ" name="getDev" visibility="public" method="_IGv-0JljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IGuJoJljEeeVh8pOL-FAVQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IGybEJljEeeVh8pOL-FAVQ" name="getNbrEssaisPlus" visibility="public" method="_IG03UJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IGzpMJljEeeVh8pOL-FAVQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IG2FcJljEeeVh8pOL-FAVQ" name="getNbrEssaisMaster" visibility="public" method="_IG5IwJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IG3TkJljEeeVh8pOL-FAVQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IG698JljEeeVh8pOL-FAVQ" name="getTailleCodePlus" visibility="public" method="_IG-BQJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IG8MEJljEeeVh8pOL-FAVQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IHAdgJljEeeVh8pOL-FAVQ" name="getTailleCodeMaster" visibility="public" method="_IHCSsJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IHBEkJljEeeVh8pOL-FAVQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IHEu8JljEeeVh8pOL-FAVQ" name="getNbrCouleursMaster" visibility="public" method="_IHHyQJljEeeVh8pOL-FAVQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IHGkIJljEeeVh8pOL-FAVQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IHK1kJljEeeVh8pOL-FAVQ" name="sauvegardeConfig" visibility="public" method="_IHMqwJljEeeVh8pOL-FAVQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IHOf8JljEeeVh8pOL-FAVQ" name="lectureConfig" visibility="public" method="_IHQVIJljEeeVh8pOL-FAVQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_IHUmkJljEeeVh8pOL-FAVQ" name="Panel" visibility="public">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IHV0sJljEeeVh8pOL-FAVQ" name="getProposition" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IHYQ8JljEeeVh8pOL-FAVQ" type="_IjrWMJPjEeeFzoTTkxK9Yg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IHaGIJljEeeVh8pOL-FAVQ" name="setProposition" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_IHb7UJljEeeVh8pOL-FAVQ" name="string" type="_IjrWMJPjEeeFzoTTkxK9Yg"/>
+          </ownedOperation>
         </packagedElement>
       </packagedElement>
     </packagedElement>
@@ -209,11 +1152,30 @@
           <packagedElement xmi:type="uml:Class" xmi:id="_Rz6LcJPjEeeFzoTTkxK9Yg" name="JFormattedTextField"/>
           <packagedElement xmi:type="uml:Class" xmi:id="_R0BgMJPjEeeFzoTTkxK9Yg" name="JComboBox"/>
           <packagedElement xmi:type="uml:Class" xmi:id="_R0Hm0JPjEeeFzoTTkxK9Yg" name="JCheckBox"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_IHipAJljEeeVh8pOL-FAVQ" name="JPanel"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_IHu2QJljEeeVh8pOL-FAVQ" name="JTextField"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_IH2LAJljEeeVh8pOL-FAVQ" name="JButton"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_IIAjEJljEeeVh8pOL-FAVQ" name="JLabel"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_IINXYJljEeeVh8pOL-FAVQ" name="JTable"/>
+          <packagedElement xmi:type="uml:Package" xmi:id="_IJLnwJljEeeVh8pOL-FAVQ" name="text">
+            <packagedElement xmi:type="uml:Class" xmi:id="_IJM14JljEeeVh8pOL-FAVQ" name="PlainDocument"/>
+            <packagedElement xmi:type="uml:Class" xmi:id="_IJ2WIJljEeeVh8pOL-FAVQ" name="AttributeSet"/>
+            <packagedElement xmi:type="uml:Class" xmi:id="_IKDKcJljEeeVh8pOL-FAVQ" name="BadLocationException"/>
+          </packagedElement>
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_IkCikJPjEeeFzoTTkxK9Yg" name="main">
         <packagedElement xmi:type="uml:Package" xmi:id="_IkDwsJPjEeeFzoTTkxK9Yg" name="PlusOuMoins">
           <packagedElement xmi:type="uml:Class" xmi:id="_IkFl4JPjEeeFzoTTkxK9Yg" name="PlateauPlusOuMoins"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_H79EEJljEeeVh8pOL-FAVQ" name="org">
+        <packagedElement xmi:type="uml:Package" xmi:id="_H7-SMJljEeeVh8pOL-FAVQ" name="apache">
+          <packagedElement xmi:type="uml:Package" xmi:id="_H7-5QJljEeeVh8pOL-FAVQ" name="logging">
+            <packagedElement xmi:type="uml:Package" xmi:id="_H8AHYJljEeeVh8pOL-FAVQ" name="log4j">
+              <packagedElement xmi:type="uml:Class" xmi:id="_H8BVgJljEeeVh8pOL-FAVQ" name="Logger"/>
+            </packagedElement>
+          </packagedElement>
         </packagedElement>
       </packagedElement>
     </packagedElement>
@@ -222,6 +1184,15 @@
         <packagedElement xmi:type="uml:Package" xmi:id="_IixXQJPjEeeFzoTTkxK9Yg" name="lang">
           <packagedElement xmi:type="uml:Class" xmi:id="_IiylYJPjEeeFzoTTkxK9Yg" name="Object"/>
           <packagedElement xmi:type="uml:Class" xmi:id="_IjrWMJPjEeeFzoTTkxK9Yg" name="String"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_H8qOsJljEeeVh8pOL-FAVQ" name="Thread"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_IMYswJljEeeVh8pOL-FAVQ" name="awt">
+          <packagedElement xmi:type="uml:Package" xmi:id="_IMZ64JljEeeVh8pOL-FAVQ" name="event">
+            <packagedElement xmi:type="uml:Interface" xmi:id="_IMbJAJljEeeVh8pOL-FAVQ" name="ActionListener"/>
+            <packagedElement xmi:type="uml:Class" xmi:id="_IMsOwJljEeeVh8pOL-FAVQ" name="ActionEvent"/>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_IM5DEJljEeeVh8pOL-FAVQ" name="KeyListener"/>
+            <packagedElement xmi:type="uml:Class" xmi:id="_INSrsJljEeeVh8pOL-FAVQ" name="KeyEvent"/>
+          </packagedElement>
         </packagedElement>
       </packagedElement>
     </packagedElement>
@@ -246,12 +1217,35 @@
   </uml:Model>
   <PapyrusJava:External xmi:id="_IifDYJPjEeeFzoTTkxK9Yg" name="javax.swing.JFrame" base_Classifier="_IiQZ4JPjEeeFzoTTkxK9Yg"/>
   <PapyrusJava:External xmi:id="_Ii4E8JPjEeeFzoTTkxK9Yg" name="java.lang.Object" base_Classifier="_IiylYJPjEeeFzoTTkxK9Yg"/>
-  <standard:Create xmi:id="_IjGHYJPjEeeFzoTTkxK9Yg" base_BehavioralFeature="_IjAn0JPjEeeFzoTTkxK9Yg"/>
   <PapyrusJava:External xmi:id="_Ijxc0JPjEeeFzoTTkxK9Yg" name="java.lang.String" base_Classifier="_IjrWMJPjEeeFzoTTkxK9Yg"/>
   <PapyrusJava:External xmi:id="_IkKeYJPjEeeFzoTTkxK9Yg" name="main.PlusOuMoins.PlateauPlusOuMoins" base_Classifier="_IkFl4JPjEeeFzoTTkxK9Yg"/>
   <PapyrusJava:External xmi:id="_Rz16AJPjEeeFzoTTkxK9Yg" name="javax.swing.JDialog" base_Classifier="_Rzy2sJPjEeeFzoTTkxK9Yg"/>
   <PapyrusJava:External xmi:id="_Rz_rAJPjEeeFzoTTkxK9Yg" name="javax.swing.JFormattedTextField" base_Classifier="_Rz6LcJPjEeeFzoTTkxK9Yg"/>
   <PapyrusJava:External xmi:id="_R0GYsJPjEeeFzoTTkxK9Yg" name="javax.swing.JComboBox" base_Classifier="_R0BgMJPjEeeFzoTTkxK9Yg"/>
   <PapyrusJava:External xmi:id="_R0KDEJPjEeeFzoTTkxK9Yg" name="javax.swing.JCheckBox" base_Classifier="_R0Hm0JPjEeeFzoTTkxK9Yg"/>
-  <standard:Create xmi:id="_R0QwwJPjEeeFzoTTkxK9Yg" base_BehavioralFeature="_R0L4QJPjEeeFzoTTkxK9Yg"/>
+  <standard:Create xmi:id="_H6dPQJljEeeVh8pOL-FAVQ" base_BehavioralFeature="_H6V6gJljEeeVh8pOL-FAVQ"/>
+  <standard:Create xmi:id="_H7d74JljEeeVh8pOL-FAVQ" base_BehavioralFeature="_H7aRgJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_H8HcIJljEeeVh8pOL-FAVQ" name="org.apache.logging.log4j.Logger" base_Classifier="_H8BVgJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_H8vuQJljEeeVh8pOL-FAVQ" name="java.lang.Thread" base_Classifier="_H8qOsJljEeeVh8pOL-FAVQ"/>
+  <standard:Create xmi:id="_H96L4JljEeeVh8pOL-FAVQ" base_BehavioralFeature="_H916cJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:Synchronized xmi:id="_H-NG0JljEeeVh8pOL-FAVQ" base_Operation="_H-I1YJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:Synchronized xmi:id="_H-VCoJljEeeVh8pOL-FAVQ" base_Operation="_H-R_UJljEeeVh8pOL-FAVQ"/>
+  <standard:Create xmi:id="_IE49oJljEeeVh8pOL-FAVQ" base_BehavioralFeature="_IE1TQJljEeeVh8pOL-FAVQ"/>
+  <standard:Create xmi:id="_IFrn0JljEeeVh8pOL-FAVQ" base_BehavioralFeature="_IFpLkJljEeeVh8pOL-FAVQ"/>
+  <standard:Create xmi:id="_IF0xwJljEeeVh8pOL-FAVQ" base_BehavioralFeature="_IFxucJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IHlsUJljEeeVh8pOL-FAVQ" name="javax.swing.JPanel" base_Classifier="_IHipAJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IHx5kJljEeeVh8pOL-FAVQ" name="javax.swing.JTextField" base_Classifier="_IHu2QJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IH5OUJljEeeVh8pOL-FAVQ" name="javax.swing.JButton" base_Classifier="_IH2LAJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IIC_UJljEeeVh8pOL-FAVQ" name="javax.swing.JLabel" base_Classifier="_IIAjEJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IIPzoJljEeeVh8pOL-FAVQ" name="javax.swing.JTable" base_Classifier="_IINXYJljEeeVh8pOL-FAVQ"/>
+  <standard:Create xmi:id="_IIV6QJljEeeVh8pOL-FAVQ" base_BehavioralFeature="_IITeAJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IJP5MJljEeeVh8pOL-FAVQ" name="javax.swing.text.PlainDocument" base_Classifier="_IJM14JljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IJ6AgJljEeeVh8pOL-FAVQ" name="javax.swing.text.AttributeSet" base_Classifier="_IJ2WIJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IKFmsJljEeeVh8pOL-FAVQ" name="javax.swing.text.BadLocationException" base_Classifier="_IKDKcJljEeeVh8pOL-FAVQ"/>
+  <standard:Create xmi:id="_IKw8IJljEeeVh8pOL-FAVQ" base_BehavioralFeature="_IKuf4JljEeeVh8pOL-FAVQ"/>
+  <standard:Create xmi:id="_ILf78JljEeeVh8pOL-FAVQ" base_BehavioralFeature="_ILdfsJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IMdlQJljEeeVh8pOL-FAVQ" name="java.awt.event.ActionListener" base_Classifier="_IMbJAJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IMurAJljEeeVh8pOL-FAVQ" name="java.awt.event.ActionEvent" base_Classifier="_IMsOwJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_IM8GYJljEeeVh8pOL-FAVQ" name="java.awt.event.KeyListener" base_Classifier="_IM5DEJljEeeVh8pOL-FAVQ"/>
+  <PapyrusJava:External xmi:id="_INVH8JljEeeVh8pOL-FAVQ" name="java.awt.event.KeyEvent" base_Classifier="_INSrsJljEeeVh8pOL-FAVQ"/>
 </xmi:XMI>
