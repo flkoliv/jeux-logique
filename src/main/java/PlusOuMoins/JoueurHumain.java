@@ -9,8 +9,10 @@ import ihm.Main;
 import ihm.PlusOuMoinsPanel;
 
 /**
+ * Classe du joueur Humain
+ * 
  * @author flkoliv
- *
+ * @version 1
  */
 public class JoueurHumain extends Competiteur {
 
@@ -20,6 +22,9 @@ public class JoueurHumain extends Competiteur {
 		this.nbrEssais = nbrEssais;
 	}
 
+	/**
+	 * @return Chaine de caractère pour un nouveau code
+	 */
 	@Override
 	public String getNewCode() {
 		String c = "";
@@ -46,19 +51,7 @@ public class JoueurHumain extends Competiteur {
 
 	@Override
 	public void getProposition() {
-		/*
-		 * String c = ""; int nbrChiffres =
-		 * Main.getInstance().getOptions().getTailleCodePlus(); boolean b = true; do {
-		 * try { c = JOptionPane.showInputDialog(null,
-		 * "Veuillez donner une proposition de " + nbrChiffres + " chiffres!",
-		 * "Proposition", JOptionPane.QUESTION_MESSAGE); Integer.parseInt(c); if
-		 * (c.length() == nbrChiffres) { b = false;
-		 * super.logger.debug("proposition faite : " + c); } else { b = true;
-		 * super.logger.debug("proposition rentré n'ayant pas la bonne longueur"); } }
-		 * catch (Exception e) {
-		 * super.logger.debug("proposition rentré ne contenant pas que des chiffres"); }
-		 * } while (b);
-		 */
+		// TODO Auto-generated method stub
 
 	}
 

@@ -128,6 +128,7 @@ public class Main extends JFrame {
 
 	/**
 	 * @param args
+	 *            parametre de la ligne de commande
 	 */
 	public static void main(String[] args) {
 
@@ -172,5 +173,10 @@ public class Main extends JFrame {
 		panneau.add(image);
 		this.setContentPane(panneau);
 		this.validate();
+	}
+
+	public boolean isDev() {
+		return options.getDev();
+
 	}
 }

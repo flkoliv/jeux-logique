@@ -1,9 +1,7 @@
 package common;
 
 public interface Jeu {
+	public void run();
 
-	void propositionDisponible();
-
-	Panel getPanel();
-
+	public void propositionDisponible();
 }

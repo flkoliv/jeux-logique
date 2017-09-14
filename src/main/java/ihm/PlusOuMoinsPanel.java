@@ -14,9 +14,14 @@ import javax.swing.JTextField;
 
 import common.Panel;
 import ihm.listener.PlusPanelOkButtonListener;
+import ihm.listener.entreeListener;
 
 /**
+ * panneau d'affichage du jeu plus ou moins
+ * 
  * @author flkoliv
+ * @version 1
+ * 
  */
 public class PlusOuMoinsPanel extends JPanel implements Panel {
 
@@ -27,17 +32,16 @@ public class PlusOuMoinsPanel extends JPanel implements Panel {
 	private JLabel intitule;
 	private int taille;
 	private int emptyRow = 0;
-
-	JTable tab;
+	private JTable tab;
 
 	public PlusOuMoinsPanel(int taille, int longueurCode, Boolean humain) {
 		this.taille = taille;
-
 		saisie = new JPanel();
 		saisie.setLayout(new BoxLayout(saisie, BoxLayout.LINE_AXIS));
 		saisie.setMaximumSize(new Dimension(275, 25));
 		jtf = new JTextField();
 		jtf.setDocument(new JTextFieldLimited(0, longueurCode));
+		jtf.addKeyListener(new entreeListener(jtf));
 		okButton = new JButton("OK");
 		okButton.setMaximumSize(new Dimension(40, 20));
 		okButton.addActionListener(new PlusPanelOkButtonListener(jtf));
@@ -50,19 +54,16 @@ public class PlusOuMoinsPanel extends JPanel implements Panel {
 			jtf.setEditable(false);
 			okButton.setVisible(false);
 		}
-
 		saisie.add(intitule);
 		saisie.add(Box.createRigidArea(new Dimension(10, 0)));
 		saisie.add(jtf);
 		saisie.add(Box.createRigidArea(new Dimension(10, 0)));
 		saisie.add(okButton);
-
 		String title[] = { "Proposition", "Résultat" };
 		Object[][] tableau = new Object[this.taille][2];
 		tab = new JTable(tableau, title);
 		tab.setEnabled(false);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-
 		this.add(Box.createRigidArea(new Dimension(0, 15)));
 		this.add(saisie, BorderLayout.NORTH);
 		this.add(Box.createRigidArea(new Dimension(0, 15)));
@@ -73,13 +74,11 @@ public class PlusOuMoinsPanel extends JPanel implements Panel {
 		this.setVisible(true);
 	}
 
-	public int getTaille() {
-		return taille;
-	}
-
-	public int propositionsRestantes() {
-		return taille - emptyRow;
-	}
+	/*
+	 * public int getTaille() { return taille; }
+	 * 
+	 * public int propositionsRestantes() { return taille - emptyRow; }
+	 */
 
 	public void setResult(String code, String result) {
 		tab.setValueAt(code, emptyRow, 0);
@@ -88,27 +87,41 @@ public class PlusOuMoinsPanel extends JPanel implements Panel {
 	}
 
 	@Override
+	/**
+	 * @return retourne la proposition de code inscrite dans le champs de texte
+	 */
 	public String getProposition() {
 		String s = jtf.getText();
 		return s;
-
 	}
 
+	/**
+	 * Efface le champs de texte du panel
+	 */
 	public void cleanProposition() {
-
 		jtf.setText("");
-
 	}
 
-	@Override
-	public Panel getPanel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	/**
+	 * @param string
+	 *            Rempli le champs de texte du panel avec une proposition
+	 */
 	@Override
 	public void setProposition(String string) {
 		jtf.setText(string);
+
+	}
+
+	public String getLastResult() {
+		if (emptyRow > 0) {
+			return (String) tab.getValueAt((emptyRow - 1), 1);
+		} else {
+			return "";
+		}
+	}
+
+	public void setMsgDev(String msg) {
+		intitule.setText("Code:" + msg);
 
 	}
 
